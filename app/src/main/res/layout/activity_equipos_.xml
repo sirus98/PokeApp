@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6D009688"
-    tools:context=".Equipos_Activity">
+    tools:context=".EquiposActivity">
 
     <Button
         android:id="@+id/crearequipo"

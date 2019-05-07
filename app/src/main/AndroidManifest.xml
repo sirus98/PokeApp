@@ -14,7 +14,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity_ver_equipos"></activity>
+        <activity
+            android:name=".view.WhosThatPokemonActivity"
+            android:label="@string/title_activity_whos_that_pokemon"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".view.Game_pokemon" />
+        <activity android:name=".view.Menu_that_pokemon" />
+        <activity android:name=".VerEquiposActivity" />
         <activity android:name=".MenuActivity" />
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.PokeActivity" />
@@ -22,11 +28,11 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".SingUp"
+            android:name=".SingUpActivity"
             android:label="@string/title_activity_sing_up"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Start_activity"
+            android:name=".StartActivity"
             android:label="@string/title_activity_start_activity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -35,8 +41,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Equipos_Activity" />
-        <activity android:name=".crear_equipo" />
+        <activity android:name=".EquiposActivity" />
+        <activity android:name=".CrearEquipoActivity" />
     </application>
 
 </manifest>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "588573348554",
+    "firebase_url": "https://pokeappcs.firebaseio.com",
+    "project_id": "pokeappcs",
+    "storage_bucket": "pokeappcs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588573348554:android:1c0877cd897013d5",
+        "android_client_info": {
+          "package_name": "com.example.dani.dgonzalezapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588573348554-l917edq276bi7mjk626djov8vj7qh7a5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dani.dgonzalezapp",
+            "certificate_hash": "6df175ca4d43294c5206522cfddb3c7fac875aa3"
+          }
+        },
+        {
+          "client_id": "588573348554-963jig5r3om7pjk8ks63c8ugjisvo735.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAEwL1JXnupgiJsgWM5GcrONFfibyCT70"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588573348554-963jig5r3om7pjk8ks63c8ugjisvo735.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

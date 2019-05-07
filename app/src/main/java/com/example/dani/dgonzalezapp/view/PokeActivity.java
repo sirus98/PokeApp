@@ -24,11 +24,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 
-import com.example.dani.dgonzalezapp.Equipos_Activity;
-import com.example.dani.dgonzalezapp.LoginActivity;
 import com.example.dani.dgonzalezapp.MainViewModel;
 import com.example.dani.dgonzalezapp.R;
-import com.example.dani.dgonzalezapp.crear_equipo;
+import com.example.dani.dgonzalezapp.CrearEquipoActivity;
 import com.example.dani.dgonzalezapp.model.Poke;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -86,7 +84,7 @@ public class PokeActivity extends AppCompatActivity {
         findViewById(R.id.añadirequipo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PokeActivity.this, crear_equipo.class);
+                Intent intent = new Intent(PokeActivity.this, CrearEquipoActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 Toast.makeText(PokeActivity.this, "Pokemon Añadido", Toast.LENGTH_LONG).show();
@@ -173,7 +171,7 @@ public class PokeActivity extends AppCompatActivity {
         valueSet2.add(v2e6);
 
 
-        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "Brand 2");
+        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "Brand b_2");
         barDataSet2.setColors(ColorTemplate.COLORFUL_COLORS);
 
         dataSets = new ArrayList<>();

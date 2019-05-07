@@ -6,11 +6,11 @@ import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.dani.dgonzalezapp.view.MainActivity;
+import com.example.dani.dgonzalezapp.view.Menu_that_pokemon;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -29,10 +29,20 @@ public class MenuActivity extends AppCompatActivity {
         });
 
 
+        findViewById(R.id.Thatpokemon).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =  new Intent(MenuActivity.this, Menu_that_pokemon.class);
+                intent.putExtra("who's that pokemon", false);
+                startActivity(intent);
+            }
+        });
+
+
         findViewById(R.id.AdministrarEquipos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =  new Intent(MenuActivity.this, Equipos_Activity.class);
+                Intent intent =  new Intent(MenuActivity.this, EquiposActivity.class);
                 startActivity(intent);
             }
         });

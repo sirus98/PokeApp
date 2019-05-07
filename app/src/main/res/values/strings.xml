@@ -16,4 +16,5 @@
     </string>
     <string name="title_activity_sing_up">SingUp</string>
     <string name="title_activity_start_activity">start_activity</string>
+    <string name="title_activity_whos_that_pokemon">WhosThatPokemonActivity</string>
 </resources>
