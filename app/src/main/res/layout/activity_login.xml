@@ -19,19 +19,11 @@
 
 
     <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
 
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
 
         <LinearLayout
@@ -40,9 +32,30 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/linearLayout2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/txtPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:imeActionId="6"
+                    android:focusable="auto"
+                    android:imeActionLabel="@string/action_sign_in_short"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.417" />
 
                 <EditText
                     android:id="@+id/txtUserName"
@@ -51,48 +64,44 @@
                     android:hint="@string/prompt_username"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/txtPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Password"
-                    android:imeActionId="6"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    android:singleLine="true"
+                    android:focusable="auto"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.335" />
 
                 <ImageView
                     android:id="@+id/entrenador"
                     android:layout_width="150dp"
                     android:layout_height="209dp"
-                    android:layout_marginStart="104dp"
-                    android:layout_marginLeft="104dp"
-                    android:layout_marginTop="160dp"
-                    android:layout_marginEnd="100dp"
-                    android:layout_marginRight="100dp"
+                    android:layout_marginStart="114dp"
+                    android:layout_marginLeft="114dp"
+                    android:layout_marginEnd="115dp"
+                    android:layout_marginRight="115dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPassword"
                     tools:layout_conversion_absoluteHeight="100dp"
                     tools:layout_conversion_absoluteWidth="100dp" />
+
+                <ImageView
+                    android:id="@+id/pokeapp"
+                    android:layout_width="150dp"
+                    android:layout_height="209dp"
+                    android:layout_marginStart="85dp"
+                    android:layout_marginLeft="85dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/pokeapp"
+                    app:layout_constraintEnd_toStartOf="@+id/txtPassword"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_conversion_absoluteHeight="100dp"
+                    tools:layout_conversion_absoluteWidth="100dp"
+                    tools:layout_editor_absoluteY="-7dp" />
 
 
                 <mehdi.sakout.fancybuttons.FancyButton
@@ -101,7 +110,7 @@
                     android:layout_height="42dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="64dp"
+                    android:layout_marginTop="23dp"
                     android:layout_marginEnd="200dp"
                     android:layout_marginRight="200dp"
                     android:paddingLeft="20dp"
@@ -110,10 +119,10 @@
                     android:paddingBottom="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/entrenador"
                     fancy:fb_borderColor="#FFFFFF"
-                    fancy:fb_defaultColor="#ec1212"
                     fancy:fb_borderWidth="1dp"
+                    fancy:fb_defaultColor="#ec1212"
                     fancy:fb_focusColor="#e3e3e3"
                     fancy:fb_fontIconResource="&#xf1a0;"
                     fancy:fb_fontIconSize="22dp"
@@ -128,19 +137,20 @@
                     android:layout_height="42dp"
                     android:layout_marginStart="200dp"
                     android:layout_marginLeft="200dp"
-                    android:layout_marginTop="64dp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="23dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginRight="25dp"
                     android:paddingLeft="20dp"
                     android:paddingTop="10dp"
                     android:paddingRight="20dp"
-                    fancy:fb_defaultColor="#2986e8"
                     android:paddingBottom="10dp"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.444"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/entrenador"
                     fancy:fb_borderColor="#FFFFFF"
                     fancy:fb_borderWidth="1dp"
+                    fancy:fb_defaultColor="#2986e8"
                     fancy:fb_focusColor="#e3e3e3"
                     fancy:fb_fontIconResource="&#xf058;"
                     fancy:fb_fontIconSize="22dp"
@@ -149,11 +159,6 @@
                     fancy:fb_text="Log In"
                     fancy:fb_textColor="#FFFFFF" />
             </android.support.constraint.ConstraintLayout>
-
-
-
-
-
 
 
         </LinearLayout>

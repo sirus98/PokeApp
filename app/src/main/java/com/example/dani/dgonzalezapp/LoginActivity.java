@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -54,6 +54,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
         findViewById(R.id.log_in).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,12 +69,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-        final ImageView pikachu_gif = findViewById(R.id.entrenador);
+        final ImageView pikachu2_gif = findViewById(R.id.entrenador);
 
         Glide.with(this)
                 .asGif()
-                .load(R.raw.pikachu)
-                .into(pikachu_gif);
+                .load(R.raw.pikachu2)
+                .into(pikachu2_gif);
 
 
 

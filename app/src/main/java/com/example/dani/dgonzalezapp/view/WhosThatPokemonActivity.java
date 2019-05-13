@@ -26,6 +26,16 @@ public class WhosThatPokemonActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+//        String[] pokemosn = {"picackue", "fssfjdklsj", "ljdkldfjs"};
+//        pokemons[r];
+//
+//
+//        picachu -> 1
+//
+//        "a_"+id+".png"
+//        "b_"+id+".png"
+
     }
 
 }
