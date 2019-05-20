@@ -47,18 +47,5 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-        final ImageView valor = findViewById(R.id.valor);
-
-        @SuppressLint("ResourceType") final ConstraintLayout layout = findViewById(R.layout.activity_start_activity);
-
-        Glide.with(this)
-                .asGif()
-                .load(R.raw.truevalor)
-                .into(valor);
-
-
-
-
-
     }
 }
