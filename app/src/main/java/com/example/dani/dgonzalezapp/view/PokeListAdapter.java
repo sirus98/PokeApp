@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -31,6 +32,7 @@ import java.util.List;
 public class PokeListAdapter extends RecyclerView.Adapter<PokeListAdapter.PokeListViewHolder>{
     public List<Poke> pokeList = new ArrayList<>();
     FragmentActivity activity;
+    MediaPlayer[] mp = new MediaPlayer[1];
 
 
     public PokeListAdapter(FragmentActivity activity) {
@@ -68,12 +70,15 @@ public class PokeListAdapter extends RecyclerView.Adapter<PokeListAdapter.PokeLi
                 intent.putExtra("pokemon_url", poke.url);
                 intent.putExtra("equipo", equipo);
                 holder.itemView.getContext().startActivity(intent);
+
+//                ArrayList<Integer>pokesound=new ArrayList<>()
+
             }
         });
 
         Glide.with(holder.itemView.getContext())
                 .asBitmap()
-                .load("http://pokestadium.com/sprites/xy/" + poke.name.toLowerCase() + ".gif")
+                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.getId() + ".png")
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(@NonNull final Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
@@ -86,6 +91,7 @@ public class PokeListAdapter extends RecyclerView.Adapter<PokeListAdapter.PokeLi
                         });
                     }
                 });
+
     }
 
     @Override

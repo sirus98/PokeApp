@@ -5,8 +5,10 @@ import android.annotation.TargetApi;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,6 +17,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +38,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import nl.dionsegijn.konfetti.KonfettiView;
@@ -46,6 +50,7 @@ public class PokeActivity extends AppCompatActivity {
 
     private MainViewModel pokeViewModel;
 
+    MediaPlayer player;
     TextView tv_name;
     TextView tv_id;
     TextView tv_url;
@@ -57,18 +62,6 @@ public class PokeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poke_show);
-
-        final KonfettiView konfettiView = findViewById(R.id.viewKonfetti);
-        konfettiView.build()
-                .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
-                .setDirection(0.0, 359.0)
-                .setSpeed(1f, 5f)
-                .setFadeOutEnabled(true)
-                .setTimeToLive(2000L)
-                .addShapes(Shape.RECT, Shape.CIRCLE)
-                .addSizes(new Size(12, 5))
-                .setPosition(-50f, konfettiView.getWidth() + 50f, -50f, -50f)
-                .streamFor(300, 5000L);
 
         final String url = getIntent().getExtras().getString("pokemon_url");
 
@@ -107,6 +100,22 @@ public class PokeActivity extends AppCompatActivity {
                 if (size == 1) tv_id.setText("#00" + String.valueOf(poke.id));
                 else if (size == 2) tv_id.setText("#0" + String.valueOf(poke.id));
                 else tv_id.setText("#" + String.valueOf(poke.id));
+
+                String soundfile = "m"+String.format("%03d",poke.id)+".wav";
+                Log.e("abc", soundfile);
+
+                AssetFileDescriptor afd = null;
+                try {
+                    afd = getAssets().openFd(soundfile);
+                    player = new MediaPlayer();
+                    player.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                    player.prepare();
+                    player.start();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
 
                 Glide.with(PokeActivity.this)
                         .asBitmap()
