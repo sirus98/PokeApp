@@ -9,10 +9,9 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.dani.dgonzalezapp.MenuActivity;
 import com.example.dani.dgonzalezapp.R;
 
-public class Menu_that_pokemon extends AppCompatActivity {
+public class MenuThatPokemonActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +21,7 @@ public class Menu_that_pokemon extends AppCompatActivity {
         findViewById(R.id.btn_play).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =  new Intent(Menu_that_pokemon.this, Game_pokemon.class);
+                Intent intent =  new Intent(MenuThatPokemonActivity.this, GamePokemonActivity.class);
                 startActivity(intent);
             }
         });
@@ -30,7 +29,7 @@ public class Menu_that_pokemon extends AppCompatActivity {
         findViewById(R.id.btn_ranking).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =  new Intent(Menu_that_pokemon.this, Menu_that_pokemon.class);
+                Intent intent =  new Intent(MenuThatPokemonActivity.this, RankingActivity.class);
                 startActivity(intent);
             }
         });
@@ -38,7 +37,7 @@ public class Menu_that_pokemon extends AppCompatActivity {
         findViewById(R.id.btn_tutorial).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =  new Intent(Menu_that_pokemon.this, Menu_that_pokemon.class);
+                Intent intent =  new Intent(MenuThatPokemonActivity.this, MenuThatPokemonActivity.class);
                 startActivity(intent);
             }
         });

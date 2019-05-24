@@ -29,7 +29,6 @@ import com.bumptech.glide.request.transition.Transition;
 
 import com.example.dani.dgonzalezapp.MainViewModel;
 import com.example.dani.dgonzalezapp.R;
-import com.example.dani.dgonzalezapp.CrearEquipoActivity;
 import com.example.dani.dgonzalezapp.model.Poke;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -40,10 +39,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import nl.dionsegijn.konfetti.KonfettiView;
-import nl.dionsegijn.konfetti.models.Shape;
-import nl.dionsegijn.konfetti.models.Size;
 
 
 public class PokeActivity extends AppCompatActivity {

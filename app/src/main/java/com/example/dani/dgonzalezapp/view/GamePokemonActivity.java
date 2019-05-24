@@ -1,7 +1,6 @@
 package com.example.dani.dgonzalezapp.view;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -16,22 +15,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dani.dgonzalezapp.LoginActivity;
 import com.example.dani.dgonzalezapp.R;
-import com.example.dani.dgonzalezapp.StartActivity;
 import com.example.dani.dgonzalezapp.model.PokeImages;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
 
 import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
 
-public class Game_pokemon extends AppCompatActivity {
+public class GamePokemonActivity extends AppCompatActivity {
     List<PokeImages> pokeImages = new ArrayList<>();
 
     Button verificar,skip;
@@ -83,8 +79,9 @@ public class Game_pokemon extends AppCompatActivity {
                                     "Correct", Toast.LENGTH_SHORT);
                     toast1.show();
 
-                    score = score+20;
+                    nombrePoke.setText("");
 
+                    score = score+20;
                     scoreText.setText("Score: "+ score);
 
 
@@ -128,15 +125,18 @@ public class Game_pokemon extends AppCompatActivity {
                                     "Error", Toast.LENGTH_SHORT);
 
                     toast1.show();
+
+                    nombrePoke.setText("");
+
                     vida = vida - 1;
                     vidas.setText("HP: "+ vida);
 
                     if(vida == 0){
                         verificar.setClickable(false);
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Game_pokemon.this);
-                        builder.setTitle("YOUR LOSE");
-                        View viewInflate = LayoutInflater.from(Game_pokemon.this).inflate(R.layout.ventanaemergente,null);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(GamePokemonActivity.this);
+                        builder.setTitle("YOU LOSE");
+                        View viewInflate = LayoutInflater.from(GamePokemonActivity.this).inflate(R.layout.ventanaemergente,null);
                         builder.setView(viewInflate);
 
                         final EditText name = viewInflate.findViewById(R.id.username);
@@ -146,25 +146,18 @@ public class Game_pokemon extends AppCompatActivity {
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 String nameStr = name.getText().toString().trim();
 
-                                Intent intent = new Intent(Game_pokemon.this, Menu_that_pokemon.class);
+                                Intent intent = new Intent(GamePokemonActivity.this, MenuThatPokemonActivity.class);
                                 startActivity(intent);
-
                             }
-
                         });
 
                         AlertDialog dialog = builder.create();
                         dialog.show();
 
                         }
-
-
                     }
-
-
                 }
-
-        });
+            });
 
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,6 +170,7 @@ public class Game_pokemon extends AppCompatActivity {
                                 "Skip", Toast.LENGTH_SHORT);
                 toast1.show();
 
+                nombrePoke.setText("");
                 vida = vida-1;
                 vidas.setText("HP: "+ vida);
                 verificar.setClickable(false);
@@ -192,6 +186,31 @@ public class Game_pokemon extends AppCompatActivity {
                         verificar.setClickable(true);
                     }
                 }.start();
+
+                if(vida == 0){
+                    verificar.setClickable(false);
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(GamePokemonActivity.this);
+                    builder.setTitle("YOU LOSE");
+                    View viewInflate = LayoutInflater.from(GamePokemonActivity.this).inflate(R.layout.ventanaemergente,null);
+                    builder.setView(viewInflate);
+
+                    final EditText name = viewInflate.findViewById(R.id.username);
+
+                    builder.setPositiveButton("Add your score", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+
+                            Intent intent = new Intent(GamePokemonActivity.this, MenuThatPokemonActivity.class);
+                            startActivity(intent);
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                }
             }
         });
     }

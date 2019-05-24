@@ -14,21 +14,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <activity
-            android:name=".view.WhosThatPokemonActivity"
-            android:label="@string/title_activity_whos_that_pokemon"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
-        <activity android:name=".view.Game_pokemon" />
-        <activity android:name=".view.Menu_that_pokemon" />
-        <activity android:name=".VerEquiposActivity" />
-        <activity android:name=".MenuActivity" />
+        <activity android:name=".view.RankingActivity"></activity>
+        <activity android:name=".view.GamePokemonActivity" />
+        <activity android:name=".view.MenuThatPokemonActivity" />
+        <activity android:name=".view.VerEquiposActivity" />
+        <activity android:name=".view.MenuActivity" />
         <activity android:name=".view.MainActivity" />
         <activity android:name=".view.PokeActivity" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".view.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".StartActivity"
+            android:name=".view.StartActivity"
             android:label="@string/title_activity_start_activity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
@@ -37,8 +34,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EquiposActivity" />
-        <activity android:name=".CrearEquipoActivity" />
+        <activity android:name=".view.EquiposActivity" />
+        <activity android:name=".view.CrearEquipoActivity" />
+
         <service android:name=".app.FireMsgService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

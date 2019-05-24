@@ -1,4 +1,4 @@
-package com.example.dani.dgonzalezapp;
+package com.example.dani.dgonzalezapp.view;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.dani.dgonzalezapp.R;
 
 public class EquiposActivity extends AppCompatActivity {
 

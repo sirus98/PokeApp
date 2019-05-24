@@ -1,4 +1,4 @@
-package com.example.dani.dgonzalezapp;
+package com.example.dani.dgonzalezapp.view;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.dani.dgonzalezapp.view.MainActivity;
+import com.example.dani.dgonzalezapp.R;
 
 public class CrearEquipoActivity extends AppCompatActivity {
 

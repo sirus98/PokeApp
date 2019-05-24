@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".view.WhosThatPokemonActivity"
-    tools:showIn="@layout/activity_whos_that_pokemon">
+    tools:context=".view.RankingActivity">
 
 </android.support.constraint.ConstraintLayout>

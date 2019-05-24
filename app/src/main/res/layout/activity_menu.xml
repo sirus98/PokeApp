@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.Menu_that_pokemon"
+    tools:context=".view.MenuThatPokemonActivity"
     android:background="@drawable/fondo"
     xmlns:fancy="http://schemas.android.com/apk/res-auto">
 
@@ -94,6 +94,17 @@
         fancy:fb_radius="30dp"
         fancy:fb_text="Administrar Equipos"
         fancy:fb_textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/sign_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="323dp"
+        android:layout_marginRight="323dp"
+        android:text="SIGN OUT"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 

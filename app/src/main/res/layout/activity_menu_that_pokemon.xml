@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C5B6F3"
-    tools:context=".view.Menu_that_pokemon"
+    tools:context=".view.MenuThatPokemonActivity"
     xmlns:fancy="http://schemas.android.com/apk/res-auto">
 
 
@@ -15,7 +15,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="141dp"
         android:layout_marginLeft="141dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="396dp"
         android:layout_marginEnd="141dp"
         android:layout_marginRight="141dp"
         android:paddingLeft="20dp"
@@ -23,6 +23,7 @@
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         fancy:fb_borderColor="#FFFFFF"
@@ -42,7 +43,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="141dp"
         android:layout_marginLeft="141dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="472dp"
         android:layout_marginEnd="141dp"
         android:layout_marginRight="141dp"
         android:paddingLeft="20dp"
@@ -50,6 +51,7 @@
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         fancy:fb_borderColor="#FFFFFF"
@@ -67,7 +69,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="141dp"
         android:layout_marginLeft="141dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginTop="548dp"
         android:layout_marginEnd="141dp"
         android:layout_marginRight="141dp"
         android:paddingLeft="20dp"
@@ -75,6 +77,7 @@
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         fancy:fb_borderColor="#FFFFFF"
@@ -87,15 +90,15 @@
         fancy:fb_textColor="#FFFFFF" />
 
 
-
     <ImageView
         android:id="@+id/gastly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="368dp"
         android:src="@raw/gastly"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
