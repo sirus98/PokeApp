@@ -2,7 +2,7 @@ package com.example.dani.dgonzalezapp.model;
 
 import io.realm.RealmObject;
 
-public class Ranking extends RealmObject {
+public class Ranking {
     int score;
     String name;
 
@@ -10,8 +10,6 @@ public class Ranking extends RealmObject {
         this.score = score;
         this.name = name;
     }
-
-
 
     public int getScore() {
         return score;

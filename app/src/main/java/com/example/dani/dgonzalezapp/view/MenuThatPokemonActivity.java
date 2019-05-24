@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuThatPokemonActivity extends AppCompatActivity {
-    List<Ranking> rankings = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

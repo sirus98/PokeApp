@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#000"
-    tools:context=".view.EquiposActivity">
+    tools:context=".view.EquiposActivity"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto">
 
-    <Button
+
+    <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/crearequipo"
         style="?android:textAppearanceSmall"
         android:layout_width="300dp"
@@ -22,10 +24,19 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/teams" />
+        app:layout_constraintTop_toBottomOf="@+id/teams"
+        fancy:fb_borderColor="#000000"
+        fancy:fb_borderWidth="2dp"
+        fancy:fb_defaultColor="#FF0000"
+        fancy:fb_focusColor="#000000"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="Crear equipo"
+        fancy:fb_textColor="#FFFFFF" />
 
 
-    <Button
+
+    <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/verequipos"
         style="?android:textAppearanceSmall"
         android:layout_width="300dp"
@@ -39,7 +50,15 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/crearequipo" />
+        app:layout_constraintTop_toBottomOf="@+id/crearequipo"
+        fancy:fb_borderColor="#000000"
+        fancy:fb_borderWidth="2dp"
+        fancy:fb_defaultColor="#FF0000"
+        fancy:fb_focusColor="#000000"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="Administrar Equipos"
+        fancy:fb_textColor="#FFFFFF" />/>
 
     <Button
         android:id="@+id/editarequipos"
@@ -52,7 +71,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:text="Editar Equipo"
+        android:text="Ver equipo"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
