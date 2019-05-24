@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.example.dani.dgonzalezapp.R;
 import com.example.dani.dgonzalezapp.model.PokeImages;
+import com.example.dani.dgonzalezapp.model.Ranking;
+import com.example.dani.dgonzalezapp.model.RankingList;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -200,7 +202,8 @@ public class GamePokemonActivity extends AppCompatActivity {
                     builder.setPositiveButton("Add your score", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-
+                            Ranking ranking = new Ranking(score, name.toString());
+                            new RankingList().addRanking(ranking);
 
                             Intent intent = new Intent(GamePokemonActivity.this, MenuThatPokemonActivity.class);
                             startActivity(intent);

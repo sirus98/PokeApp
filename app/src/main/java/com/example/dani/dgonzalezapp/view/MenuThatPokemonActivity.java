@@ -10,8 +10,13 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.dani.dgonzalezapp.R;
+import com.example.dani.dgonzalezapp.model.Ranking;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuThatPokemonActivity extends AppCompatActivity {
+    List<Ranking> rankings = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
