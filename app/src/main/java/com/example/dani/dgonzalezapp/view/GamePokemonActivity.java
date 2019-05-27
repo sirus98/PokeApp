@@ -18,7 +18,8 @@ import android.widget.Toast;
 import com.example.dani.dgonzalezapp.R;
 import com.example.dani.dgonzalezapp.model.PokeImages;
 import com.example.dani.dgonzalezapp.model.Ranking;
-import com.example.dani.dgonzalezapp.model.RankingList;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.net.MalformedURLException;
 import java.util.ArrayList;
@@ -31,11 +32,12 @@ import nl.dionsegijn.konfetti.models.Size;
 
 public class GamePokemonActivity extends AppCompatActivity {
     List<PokeImages> pokeImages = new ArrayList<>();
+    DatabaseReference mReference;
 
     Button verificar,skip;
     ImageView black;
     int random;
-    EditText nombrePoke;
+    EditText nombrePoke, nameE;
     TextView scoreText,vidas;
     int score = 0;
     int vida = 3;
@@ -44,6 +46,8 @@ public class GamePokemonActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_pokemon);
+
+        mReference = FirebaseDatabase.getInstance().getReference();
 
 
         Random rand = new Random();
@@ -197,13 +201,19 @@ public class GamePokemonActivity extends AppCompatActivity {
                     View viewInflate = LayoutInflater.from(GamePokemonActivity.this).inflate(R.layout.ventanaemergente,null);
                     builder.setView(viewInflate);
 
-                    final EditText name = viewInflate.findViewById(R.id.username);
+                    nameE = viewInflate.findViewById(R.id.username);
 
                     builder.setPositiveButton("Add your score", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            Ranking ranking = new Ranking(score, name.toString());
-                            new RankingList().addRanking(ranking);
+
+                            String key = mReference.push().getKey();
+                            String namee = nameE.getText().toString();
+
+                            Ranking ranking = new Ranking(score, namee);
+
+                            mReference.child("Ranking").child(key).setValue(ranking);
+
 
                             Intent intent = new Intent(GamePokemonActivity.this, MenuThatPokemonActivity.class);
                             startActivity(intent);

@@ -62,7 +62,7 @@ public class MenuActivity extends AppCompatActivity {
                             .signOut(MenuActivity.this)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    startActivity(new Intent(MenuActivity.this, MainActivity.class));
+                                    startActivity(new Intent(MenuActivity.this, StartActivity.class));
                                     finish();
                                 }
                             });

@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.dani.dgonzalezapp.R;
 
+import mehdi.sakout.fancybuttons.FancyButton;
+
 public class EquiposActivity extends AppCompatActivity {
 
     @Override
@@ -19,7 +21,7 @@ public class EquiposActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipos_);
 
-        Button btnCrear = (Button) findViewById(R.id.crearequipo);
+        FancyButton btnCrear = findViewById(R.id.crearequipo);
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -29,7 +31,7 @@ public class EquiposActivity extends AppCompatActivity {
         });
 
 
-        Button btnVer = (Button) findViewById(R.id.verequipos);
+        FancyButton btnVer = findViewById(R.id.verequipos);
         btnVer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,43 +1,65 @@
 package com.example.dani.dgonzalezapp.view;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.dani.dgonzalezapp.R;
+import com.example.dani.dgonzalezapp.RankingViewHolder;
 import com.example.dani.dgonzalezapp.model.Ranking;
-import com.example.dani.dgonzalezapp.model.RankingList;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class RankingActivity extends AppCompatActivity {
+
+    public static final String RANKING_REFERENCE = "Ranking";
+    public DatabaseReference mReference;
+    public FirebaseUser mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ranking);
+        setupComponents();
+    }
+    private void setupComponents() {
+        mReference = FirebaseDatabase.getInstance().getReference();
+        mUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        List<Ranking> rankings = new ArrayList<>();
+        FirebaseRecyclerOptions<Ranking> options = new FirebaseRecyclerOptions.Builder<Ranking>()
+                .setIndexedQuery(mReference.child(RANKING_REFERENCE).limitToFirst(100),
+                        mReference.child(RANKING_REFERENCE), Ranking.class)
+                .setLifecycleOwner(this)
+                .build();
 
-        TextView pos1,pos2,pos3,pos4,pos5;
+        RecyclerView recyclerView = findViewById(R.id.rankingList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        recyclerView.setAdapter(new FirebaseRecyclerAdapter<Ranking, RankingViewHolder>(options) {
+            @NonNull
+            @Override
+            public RankingViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_ranking, parent, false);
+
+                return new RankingViewHolder(view);
+            }
+
+            @Override
+            protected void onBindViewHolder(@NonNull RankingViewHolder holder, int position, @NonNull Ranking ranking) {
 
 
-        rankings = new RankingList().mostrarRanking();
+                holder.name.setText("Name: " + ranking.getName());
+                holder.score.setText("Score: " + ranking.getScore());
 
-        pos1 = findViewById(R.id.pos1);
-        pos2 = findViewById(R.id.pos2);
-        pos3 = findViewById(R.id.pos3);
-        pos4 = findViewById(R.id.pos4);
-        pos5 = findViewById(R.id.pos5);
-
-        pos1.setText(rankings.get(0).toString());
-        pos2.setText(rankings.get(1).toString());
-        pos3.setText(rankings.get(2).toString());
-        pos4.setText(rankings.get(3).toString());
-        pos5.setText(rankings.get(4).toString());
-
-
+            }
+        });
     }
 }

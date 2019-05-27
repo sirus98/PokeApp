@@ -1,10 +1,12 @@
 package com.example.dani.dgonzalezapp.model;
 
-import io.realm.RealmObject;
+
 
 public class Ranking {
     int score;
     String name;
+
+    public Ranking(){}
 
     public Ranking(int score, String name) {
         this.score = score;
@@ -26,7 +28,5 @@ public class Ranking {
     public void setName(String name) {
         this.name = name;
     }
-
-
 
 }

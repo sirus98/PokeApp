@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "588573348554-e01hit9o0avqfrsim8if7lmp39r39tl4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dani.dgonzalezapp",
+            "certificate_hash": "55d6a56e63848394f6855dbd47091d6ac06544f4"
+          }
+        },
+        {
           "client_id": "588573348554-963jig5r3om7pjk8ks63c8ugjisvo735.apps.googleusercontent.com",
           "client_type": 3
         }
