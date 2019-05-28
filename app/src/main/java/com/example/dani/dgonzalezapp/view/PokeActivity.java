@@ -29,6 +29,8 @@ import com.bumptech.glide.request.transition.Transition;
 
 import com.example.dani.dgonzalezapp.MainViewModel;
 import com.example.dani.dgonzalezapp.R;
+import com.example.dani.dgonzalezapp.database.DatabaseHelper;
+import com.example.dani.dgonzalezapp.database.EquipoPokemon;
 import com.example.dani.dgonzalezapp.model.Poke;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -67,11 +69,13 @@ public class PokeActivity extends AppCompatActivity {
 
         FloatingActionButton addequipo = findViewById(R.id.añadirequipo);
 
-
-
         findViewById(R.id.añadirequipo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                final DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
+                dbHelper.addPokemonToTeam(new EquipoPokemon("0", "0", tv_name.getText().toString(), "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + tv_id.getText().toString() + ".png"));
+
                 Intent intent = new Intent(PokeActivity.this, CrearEquipoActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
@@ -109,7 +113,6 @@ public class PokeActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
 
 
                 Glide.with(PokeActivity.this)

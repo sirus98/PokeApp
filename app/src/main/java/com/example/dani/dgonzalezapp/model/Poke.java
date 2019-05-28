@@ -15,10 +15,6 @@ public class Poke implements Serializable {
     public Species species;
 
     public int getId(){
-//        Pattern pattern = Pattern.compile("/\([");
-//        Matcher matcher = pattern.matcher(url);
-//        String idString = matcher.group(0);
-//
         String[] parts = url.split("/");
         return Integer.parseInt(parts[parts.length-1]);
     }
