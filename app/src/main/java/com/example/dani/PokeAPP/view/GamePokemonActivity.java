@@ -4,9 +4,9 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -14,14 +14,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.dani.PokeAPP.R;
 import com.example.dani.PokeAPP.model.PokeImages;
 import com.example.dani.PokeAPP.model.Ranking;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import mehdi.sakout.fancybuttons.FancyButton;
 import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
@@ -30,8 +34,8 @@ public class GamePokemonActivity extends AppCompatActivity {
     List<PokeImages> pokeImages = new ArrayList<>();
     DatabaseReference mReference;
 
-    Button verificar,skip;
-    ImageView black,hp1,hp2,hp3;
+    Button verificar, skip;
+    ImageView black, hp1, hp2, hp3;
     int random;
     EditText nombrePoke, nameE;
     TextView scoreText;
@@ -46,30 +50,30 @@ public class GamePokemonActivity extends AppCompatActivity {
         mReference = FirebaseDatabase.getInstance().getReference();
         Random rand = new Random();
         black = findViewById(R.id.imagePoke);
-        nombrePoke =findViewById(R.id.textPoke);
+        nombrePoke = findViewById(R.id.textPoke);
         scoreText = findViewById(R.id.score);
 
-        skip = findViewById(R.id.skip);
+        FancyButton verificar = findViewById(R.id.verificar);
+        FancyButton skip = findViewById(R.id.skip);
 
-            pokeImages.add(new PokeImages("Dragonite",R.raw.b_dragonite,R.raw.dragonite));
-            pokeImages.add(new PokeImages("Snorlax",R.raw.b_snorlax,R.raw.snorlax));
-            pokeImages.add(new PokeImages("Manectric",R.raw.b_manectric,R.raw.manectric));
-            pokeImages.add(new PokeImages("Flygon",R.raw.b_flygon,R.raw.flygon));
-            pokeImages.add(new PokeImages("Pikachu",R.raw.b_pikachu,R.raw.pikachu));
-            pokeImages.add(new PokeImages("Sceptile",R.raw.b_sceptile,R.raw.sceptile));
+        pokeImages.add(new PokeImages("Dragonite", R.raw.b_dragonite, R.raw.dragonite));
+        pokeImages.add(new PokeImages("Snorlax", R.raw.b_snorlax, R.raw.snorlax));
+        pokeImages.add(new PokeImages("Manectric", R.raw.b_manectric, R.raw.manectric));
+        pokeImages.add(new PokeImages("Flygon", R.raw.b_flygon, R.raw.flygon));
+        pokeImages.add(new PokeImages("Pikachu", R.raw.b_pikachu, R.raw.pikachu));
+        pokeImages.add(new PokeImages("Sceptile", R.raw.b_sceptile, R.raw.sceptile));
 
 
         random = rand.nextInt(6);
 
         black.setImageDrawable(getResources().getDrawable(pokeImages.get(random).getImg_black()));
 
-        verificar = findViewById(R.id.verificar);
 
         verificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if(pokeImages.get(random).getNom().equals(nombrePoke.getText().toString())){
+                if (pokeImages.get(random).getNom().equals(nombrePoke.getText().toString())) {
                     black.setImageDrawable(getResources().getDrawable(pokeImages.get(random).getImg_color()));
                     Toast toast1 =
                             Toast.makeText(getApplicationContext(),
@@ -78,8 +82,8 @@ public class GamePokemonActivity extends AppCompatActivity {
 
                     nombrePoke.setText("");
 
-                    score = score+20;
-                    scoreText.setText("Score: "+ score);
+                    score = score + 20;
+                    scoreText.setText("Score: " + score);
 
 
                     final KonfettiView konfettiView = findViewById(R.id.viewKonfetti);
@@ -95,7 +99,7 @@ public class GamePokemonActivity extends AppCompatActivity {
                             .streamFor(300, 500L);
 
                     verificar.setClickable(false);
-                    new CountDownTimer(3000,1000) {
+                    new CountDownTimer(3000, 1000) {
 
                         @Override
                         public void onTick(long millisUntilFinished) {
@@ -115,7 +119,7 @@ public class GamePokemonActivity extends AppCompatActivity {
                         }
                     }.start();
 
-                }else{
+                } else {
                     Toast toast1 =
                             Toast.makeText(getApplicationContext(),
                                     "Error", Toast.LENGTH_SHORT);
@@ -127,25 +131,25 @@ public class GamePokemonActivity extends AppCompatActivity {
                     vida = vida - 1;
 
 
-                    if(vida==2){
-                        hp3= findViewById(R.id.hp3);
+                    if (vida == 2) {
+                        hp3 = findViewById(R.id.hp3);
                         hp3.setVisibility(View.GONE);
                     }
 
-                    if(vida==1){
-                        hp2= findViewById(R.id.hp2);
+                    if (vida == 1) {
+                        hp2 = findViewById(R.id.hp2);
                         hp2.setVisibility(View.GONE);
                     }
 
 
-                    if(vida == 0){
-                        hp1= findViewById(R.id.hp1);
+                    if (vida == 0) {
+                        hp1 = findViewById(R.id.hp1);
                         hp1.setVisibility(View.GONE);
                         verificar.setClickable(false);
 
                         AlertDialog.Builder builder = new AlertDialog.Builder(GamePokemonActivity.this);
                         builder.setTitle("YOU LOSE");
-                        View viewInflate = LayoutInflater.from(GamePokemonActivity.this).inflate(R.layout.ventanaemergente,null);
+                        View viewInflate = LayoutInflater.from(GamePokemonActivity.this).inflate(R.layout.ventanaemergente, null);
                         builder.setView(viewInflate);
 
                         final EditText name = viewInflate.findViewById(R.id.username);
@@ -163,10 +167,10 @@ public class GamePokemonActivity extends AppCompatActivity {
                         AlertDialog dialog = builder.create();
                         dialog.show();
 
-                        }
                     }
                 }
-            });
+            }
+        });
 
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,10 +184,10 @@ public class GamePokemonActivity extends AppCompatActivity {
                 toast1.show();
 
                 nombrePoke.setText("");
-                vida = vida-1;
+                vida = vida - 1;
 
                 verificar.setClickable(false);
-                new CountDownTimer(3000,1000) {
+                new CountDownTimer(3000, 1000) {
 
                     @Override
                     public void onTick(long millisUntilFinished) {
@@ -196,26 +200,25 @@ public class GamePokemonActivity extends AppCompatActivity {
                     }
                 }.start();
 
-                if(vida==2){
-                    hp3= findViewById(R.id.hp3);
+                if (vida == 2) {
+                    hp3 = findViewById(R.id.hp3);
                     hp3.setVisibility(View.INVISIBLE);
                 }
 
-                if(vida==1){
-                    hp2= findViewById(R.id.hp2);
+                if (vida == 1) {
+                    hp2 = findViewById(R.id.hp2);
                     hp2.setVisibility(View.INVISIBLE);
                 }
 
-
-                if(vida == 0){
-                    hp1= findViewById(R.id.hp1);
+                if (vida == 0) {
+                    hp1 = findViewById(R.id.hp1);
                     hp1.setVisibility(View.INVISIBLE);
 
                     verificar.setClickable(false);
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(GamePokemonActivity.this);
                     builder.setTitle("YOU LOSE");
-                    View viewInflate = LayoutInflater.from(GamePokemonActivity.this).inflate(R.layout.ventanaemergente,null);
+                    View viewInflate = LayoutInflater.from(GamePokemonActivity.this).inflate(R.layout.ventanaemergente, null);
                     builder.setView(viewInflate);
 
                     nameE = viewInflate.findViewById(R.id.username);
@@ -244,11 +247,6 @@ public class GamePokemonActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
-
-
 
 
 }

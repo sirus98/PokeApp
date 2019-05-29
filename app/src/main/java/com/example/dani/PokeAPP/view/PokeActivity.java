@@ -22,10 +22,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-
 import com.example.dani.PokeAPP.MainViewModel;
 import com.example.dani.PokeAPP.R;
 import com.example.dani.PokeAPP.model.Poke;
@@ -38,31 +38,26 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class PokeActivity extends AppCompatActivity {
 
-    private MainViewModel pokeViewModel;
     DatabaseReference mRef;
     String uid;
-
     MediaPlayer player;
     TextView tv_name;
     TextView tv_id;
     TextView tv_url;
     ImageView iv_imagen;
     ConstraintLayout contenedor;
-
-
     boolean load;
-
+    private MainViewModel pokeViewModel;
 
     @SuppressLint("RestrictedApi")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {        
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poke_show);
 
@@ -79,9 +74,8 @@ public class PokeActivity extends AppCompatActivity {
         FloatingActionButton addequipo = findViewById(R.id.añadirequipo);
 
 
-
         boolean equipo = getIntent().getBooleanExtra("equipo", false);
-        boolean gmail = getIntent().getBooleanExtra("gmail",false);
+        boolean gmail = getIntent().getBooleanExtra("gmail", false);
 
 
         if (equipo) {
@@ -99,14 +93,14 @@ public class PokeActivity extends AppCompatActivity {
                 else if (size == 2) tv_id.setText("#0" + String.valueOf(poke.id));
                 else tv_id.setText("#" + String.valueOf(poke.id));
 
-                String soundfile = "m"+String.format("%03d",poke.id)+".wav";
+                String soundfile = "m" + String.format("%03d", poke.id) + ".wav";
                 Log.e("abc", soundfile);
 
                 AssetFileDescriptor afd = null;
                 try {
                     afd = getAssets().openFd(soundfile);
                     player = new MediaPlayer();
-                    player.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+                    player.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                     player.prepare();
                     player.start();
                 } catch (IOException e) {
@@ -169,11 +163,7 @@ public class PokeActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-    private ArrayList<BarDataSet> getDataSet(){
+    private ArrayList<BarDataSet> getDataSet() {
         ArrayList<BarDataSet> dataSets = null;
 
 

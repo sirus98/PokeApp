@@ -1,9 +1,10 @@
 package com.example.dani.PokeAPP.view;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.widget.ImageView;
+
 import com.example.dani.PokeAPP.GlideApp;
 import com.example.dani.PokeAPP.R;
 import com.example.dani.PokeAPP.model.Poke;
@@ -30,6 +31,7 @@ public class VerEquiposActivity extends AppCompatActivity {
 
         loadTeam();
     }
+
     void loadTeam() {
 
         mRef.child("teams").child(uid).addValueEventListener(new ValueEventListener() {

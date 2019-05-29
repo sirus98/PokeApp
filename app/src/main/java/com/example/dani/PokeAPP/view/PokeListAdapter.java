@@ -15,15 +15,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.dani.PokeAPP.R;
 import com.example.dani.PokeAPP.model.Poke;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class PokeListAdapter extends RecyclerView.Adapter<PokeListAdapter.PokeListViewHolder>{
+public class PokeListAdapter extends RecyclerView.Adapter<PokeListAdapter.PokeListViewHolder> {
     public List<Poke> pokeList = new ArrayList<>();
     FragmentActivity activity;
     MediaPlayer[] mp = new MediaPlayer[1];
@@ -51,8 +53,8 @@ public class PokeListAdapter extends RecyclerView.Adapter<PokeListAdapter.PokeLi
         holder.tv_pokename.setText(poke.name);
 
         int size = String.valueOf(poke.lastIdPart()).length();
-        if(size == 1 )holder.id.setText("#00" + String.valueOf(poke.lastIdPart()));
-        else if (size == 2)holder.id.setText("#0" + String.valueOf(poke.lastIdPart()));
+        if (size == 1) holder.id.setText("#00" + String.valueOf(poke.lastIdPart()));
+        else if (size == 2) holder.id.setText("#0" + String.valueOf(poke.lastIdPart()));
         else holder.id.setText("#" + String.valueOf(poke.lastIdPart()));
 
         final boolean equipo = activity.getIntent().getBooleanExtra("equipo", false);

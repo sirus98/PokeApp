@@ -1,14 +1,15 @@
 package com.example.dani.PokeAPP.view;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.example.dani.PokeAPP.R;
 import com.firebase.ui.auth.AuthUI;
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
 
-    boolean gmail= false;
+    boolean gmail = false;
 
     // UI references.
 
@@ -79,22 +80,20 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordView = (EditText) findViewById(R.id.txtPassword);
 
 
-
-
         FancyButton btnLogin = (FancyButton) findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 String UserName = mUserName.getText().toString();
                 String Pwd = mPasswordView.getText().toString();
-                if (UserName.equalsIgnoreCase("usuari") && Pwd.equals("usuari")){
+                if (UserName.equalsIgnoreCase("usuari") && Pwd.equals("usuari")) {
                     Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                    gmail= false;
+                    gmail = false;
                     intent.putExtra("gmail", gmail);
 
                     startActivity(intent);
                     Toast.makeText(LoginActivity.this, "You are Sign in Successfuly.", Toast.LENGTH_LONG).show();
-                }else {
+                } else {
                     Toast.makeText(LoginActivity.this, "Sorry, Username or Password is incorrect", Toast.LENGTH_LONG).show();
 
                 }
@@ -107,16 +106,17 @@ public class LoginActivity extends AppCompatActivity {
         mProgressView = findViewById(R.id.login_progress);
     }
 
-    void comeIn(){
+    void comeIn() {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
-            gmail= true;
+            gmail = true;
             startActivity(new Intent(this, MenuActivity.class).putExtra("gmail", gmail));
 
             finish();
         }
     }
-    void signIn(){
+
+    void signIn() {
         startActivityForResult(
                 AuthUI.getInstance()
                         .createSignInIntentBuilder()

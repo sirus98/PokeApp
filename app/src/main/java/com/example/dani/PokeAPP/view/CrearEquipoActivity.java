@@ -1,12 +1,13 @@
 package com.example.dani.PokeAPP.view;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
 import com.example.dani.PokeAPP.GlideApp;
 import com.example.dani.PokeAPP.R;
 import com.example.dani.PokeAPP.model.Poke;
@@ -21,10 +22,10 @@ import com.google.firebase.database.ValueEventListener;
 
 public class CrearEquipoActivity extends AppCompatActivity {
 
+    boolean load = false;
+    boolean creado;
     private DatabaseReference mRef;
     private String uid;
-    boolean load = false;
-    Boolean creado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class CrearEquipoActivity extends AppCompatActivity {
         mRef = FirebaseDatabase.getInstance().getReference();
         uid = FirebaseAuth.getInstance().getUid();
         load = getIntent().getBooleanExtra("load", load);
-        if(load){
+        if (load) {
             loadTeam();
         }
 
@@ -42,10 +43,10 @@ public class CrearEquipoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(CrearEquipoActivity.this, "Tu equipo ha sido añadido.", Toast.LENGTH_LONG).show();
-                creado=true;
+                creado = true;
                 Intent intent = new Intent(CrearEquipoActivity.this, EquiposActivity.class);
                 intent.putExtra("creado", creado);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                 startActivity(intent);
             }
         });
@@ -111,14 +112,14 @@ public class CrearEquipoActivity extends AppCompatActivity {
         });
     }
 
-    void loadTeam(){
+    void loadTeam() {
 
         mRef.child("teams").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Team team = dataSnapshot.getValue(Team.class);
 
-                int i =0;
+                int i = 0;
                 if (team != null && !team.pokemons.isEmpty()) {
                     for (Poke poke : team.pokemons.values()) {
                         System.out.println("ABCD -> i -> " + i);
@@ -176,6 +177,7 @@ public class CrearEquipoActivity extends AppCompatActivity {
         });
 
     }
+
     @Override
     public void onBackPressed() {
         // super.onBackPressed(); commented this line in order to disable back press

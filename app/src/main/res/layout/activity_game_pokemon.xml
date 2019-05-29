@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.GamePokemonActivity"
-    android:background="@drawable/fondowhosthat">
+    android:background="@drawable/fondowhosthat"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto">
 
     <nl.dionsegijn.konfetti.KonfettiView
         android:id="@+id/viewKonfetti"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
 
     <ImageView
@@ -91,10 +93,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagePoke" />
 
-    <Button
+    <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/verificar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="37dp"
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="12dp"
@@ -104,21 +106,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPoke" />
+        app:layout_constraintTop_toBottomOf="@+id/textPoke"
+        fancy:fb_borderColor="#000000"
+        fancy:fb_borderWidth="2dp"
+        fancy:fb_defaultColor="#FF0000"
+        fancy:fb_focusColor="#000000"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="Verify"
+        fancy:fb_textColor="#FFFFFF" />
 
-    <Button
+    <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/skip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="276dp"
-        android:layout_marginLeft="276dp"
+        android:layout_width="105dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="289dp"
+        android:layout_marginLeft="289dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="43dp"
         android:layout_marginRight="43dp"
         android:text="Skip"
         app:layout_constraintEnd_toStartOf="@+id/viewKonfetti"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.139"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPoke" />
+        app:layout_constraintTop_toBottomOf="@+id/textPoke"
+        fancy:fb_borderColor="#000000"
+        fancy:fb_borderWidth="2dp"
+        fancy:fb_defaultColor="#FF0000"
+        fancy:fb_focusColor="#000000"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="Skip"
+        fancy:fb_textColor="#FFFFFF" />
 
 </android.support.constraint.ConstraintLayout>

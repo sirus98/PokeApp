@@ -1,7 +1,7 @@
 package com.example.dani.PokeAPP.model;
 
 public class Ranking {
-    int score;
+    public static int score;
     String name;
 
     public Ranking(){}

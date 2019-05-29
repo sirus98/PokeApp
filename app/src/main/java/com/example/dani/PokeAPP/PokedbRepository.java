@@ -17,11 +17,11 @@ import retrofit2.Response;
 public class PokedbRepository {
     PokedbAPI pokedbAPI;
 
-    public PokedbRepository(){
+    public PokedbRepository() {
         pokedbAPI = PokedbModule.getAPI();
     }
 
-    public LiveData<List<Poke>> getPokemonList(){
+    public LiveData<List<Poke>> getPokemonList() {
         final MutableLiveData<List<Poke>> lista = new MutableLiveData<>();
 
         pokedbAPI.getPokemonList().enqueue(new Callback<PokeList>() {
@@ -31,12 +31,14 @@ public class PokedbRepository {
             }
 
             @Override
-            public void onFailure(Call<PokeList> call, Throwable t) {}
+            public void onFailure(Call<PokeList> call, Throwable t) {
+            }
         });
 
-        return lista;    }
+        return lista;
+    }
 
-    public LiveData<Poke> getPokemon(String url){
+    public LiveData<Poke> getPokemon(String url) {
         final MutableLiveData<Poke> poke = new MutableLiveData<>();
 
         pokedbAPI.getPokemon(url).enqueue(new Callback<Poke>() {
@@ -46,7 +48,8 @@ public class PokedbRepository {
             }
 
             @Override
-            public void onFailure(Call<Poke> call, Throwable t) {}
+            public void onFailure(Call<Poke> call, Throwable t) {
+            }
         });
 
         return poke;

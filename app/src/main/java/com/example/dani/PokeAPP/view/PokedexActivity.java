@@ -8,9 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import com.example.dani.PokeAPP.MainViewModel;
 import com.example.dani.PokeAPP.R;
 import com.example.dani.PokeAPP.model.Poke;
+
 import java.util.List;
 
 public class PokedexActivity extends AppCompatActivity {

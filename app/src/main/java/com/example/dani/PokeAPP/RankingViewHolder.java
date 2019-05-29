@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.TextView;
 
 
-
 public class RankingViewHolder extends RecyclerView.ViewHolder {
     public TextView name;
     public TextView score;
