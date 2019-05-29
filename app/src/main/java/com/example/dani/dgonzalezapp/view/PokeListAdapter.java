@@ -2,7 +2,6 @@ package com.example.dani.dgonzalezapp.view;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.annotation.NonNull;
@@ -15,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -56,10 +54,10 @@ public class PokeListAdapter extends RecyclerView.Adapter<PokeListAdapter.PokeLi
 
         holder.tv_pokename.setText(poke.name);
 
-        int size = String.valueOf(poke.getId()).length();
-        if(size == 1 )holder.id.setText("#00" + String.valueOf(poke.getId()));
-        else if (size == 2)holder.id.setText("#0" + String.valueOf(poke.getId()));
-        else holder.id.setText("#" + String.valueOf(poke.getId()));
+        int size = String.valueOf(poke.lastIdPart()).length();
+        if(size == 1 )holder.id.setText("#00" + String.valueOf(poke.lastIdPart()));
+        else if (size == 2)holder.id.setText("#0" + String.valueOf(poke.lastIdPart()));
+        else holder.id.setText("#" + String.valueOf(poke.lastIdPart()));
 
         final boolean equipo = activity.getIntent().getBooleanExtra("equipo", false);
 
@@ -78,7 +76,7 @@ public class PokeListAdapter extends RecyclerView.Adapter<PokeListAdapter.PokeLi
 
         Glide.with(holder.itemView.getContext())
                 .asBitmap()
-                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.getId() + ".png")
+                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.lastIdPart() + ".png")
                 .into(new SimpleTarget<Bitmap>() {
                     @Override
                     public void onResourceReady(@NonNull final Bitmap resource, @Nullable Transition<? super Bitmap> transition) {

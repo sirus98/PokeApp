@@ -44,4 +44,14 @@ public class EquipoPokemon {
         this.image = image;
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "EquipoPokemon{" +
+                "idEquipo='" + idEquipo + '\'' +
+                ", idPokemon='" + idPokemon + '\'' +
+                ", image='" + image + '\'' +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

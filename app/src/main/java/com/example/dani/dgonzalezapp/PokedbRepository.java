@@ -32,27 +32,22 @@ public class PokedbRepository {
             }
 
             @Override
-            public void onFailure(Call<PokeList> call, Throwable t) {
-            }
+            public void onFailure(Call<PokeList> call, Throwable t) {}
         });
 
-        return lista;
-    }
+        return lista;    }
 
     public LiveData<Poke> getPokemon(String url){
         final MutableLiveData<Poke> poke = new MutableLiveData<>();
 
-        Log.e("MIERDAA", "REPOSO S  " + url);
         pokedbAPI.getPokemon(url).enqueue(new Callback<Poke>() {
             @Override
             public void onResponse(Call<Poke> call, Response<Poke> response) {
-                Log.e("MIERDAA", "==RESPONSE==>" + response);
                 poke.setValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<Poke> call, Throwable t) {
-            }
+            public void onFailure(Call<Poke> call, Throwable t) {}
         });
 
         return poke;

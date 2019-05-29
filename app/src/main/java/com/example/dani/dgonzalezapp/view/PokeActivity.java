@@ -32,11 +32,15 @@ import com.example.dani.dgonzalezapp.R;
 import com.example.dani.dgonzalezapp.database.DatabaseHelper;
 import com.example.dani.dgonzalezapp.database.EquipoPokemon;
 import com.example.dani.dgonzalezapp.model.Poke;
+import com.firebase.ui.database.FirebaseArray;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 import java.io.IOException;
@@ -46,6 +50,8 @@ import java.util.ArrayList;
 public class PokeActivity extends AppCompatActivity {
 
     private MainViewModel pokeViewModel;
+    DatabaseReference mRef;
+    String uid;
 
     MediaPlayer player;
     TextView tv_name;
@@ -54,11 +60,17 @@ public class PokeActivity extends AppCompatActivity {
     ImageView iv_imagen;
     ConstraintLayout contenedor;
 
+    boolean load;
+
+
     @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poke_show);
+
+        mRef = FirebaseDatabase.getInstance().getReference();
+        uid = FirebaseAuth.getInstance().getUid();
 
         final String url = getIntent().getExtras().getString("pokemon_url");
 
@@ -69,19 +81,7 @@ public class PokeActivity extends AppCompatActivity {
 
         FloatingActionButton addequipo = findViewById(R.id.añadirequipo);
 
-        findViewById(R.id.añadirequipo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                final DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
-                dbHelper.addPokemonToTeam(new EquipoPokemon("0", "0", tv_name.getText().toString(), "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + tv_id.getText().toString() + ".png"));
-
-                Intent intent = new Intent(PokeActivity.this, CrearEquipoActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-                Toast.makeText(PokeActivity.this, "Pokemon Añadido", Toast.LENGTH_LONG).show();
-            }
-        });
 
         boolean equipo = getIntent().getBooleanExtra("equipo", false);
 
@@ -150,6 +150,24 @@ public class PokeActivity extends AppCompatActivity {
                 chart.setDrawGridBackground(false);
 
                 chart.invalidate();
+
+                findViewById(R.id.añadirequipo).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        final DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
+//
+
+                        Log.e("abc", poke.id + " " + poke.name + " " + poke.url);
+                        mRef.child("teams").child(uid).child("pokemons").push().setValue(poke);
+                        Intent intent = new Intent(PokeActivity.this, CrearEquipoActivity.class);
+                        load = true;
+                        intent.putExtra("load", load);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        Toast.makeText(PokeActivity.this, "Pokemon Añadido", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
         });
     }

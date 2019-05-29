@@ -57,33 +57,10 @@
         fancy:fb_focusColor="#000000"
         fancy:fb_iconPosition="left"
         fancy:fb_radius="30dp"
-        fancy:fb_text="Administrar Equipos"
+        fancy:fb_text="Ver equipo"
         fancy:fb_textColor="#FFFFFF" />/>
 
-    <mehdi.sakout.fancybuttons.FancyButton
-        android:id="@+id/editarequipos"
-        style="?android:textAppearanceSmall"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Ver equipo"
-        android:textStyle="bold"
-        fancy:fb_borderColor="#000000"
-        fancy:fb_borderWidth="2dp"
-        fancy:fb_defaultColor="#FF0000"
-        fancy:fb_focusColor="#000000"
-        fancy:fb_iconPosition="left"
-        fancy:fb_radius="30dp"
-        fancy:fb_text="Ver equipo"
-        fancy:fb_textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/verequipos" />
+
 
     <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/borrarequipo"
@@ -93,11 +70,14 @@
         android:layout_margin="16dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="Borrar Equipo"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/verequipos"
         fancy:fb_borderColor="#000000"
         fancy:fb_borderWidth="2dp"
         fancy:fb_defaultColor="#FF0000"
@@ -105,25 +85,7 @@
         fancy:fb_iconPosition="left"
         fancy:fb_radius="30dp"
         fancy:fb_text="Borrar equipo"
-        fancy:fb_textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editarequipos" />
-
-    <!--<RelativeLayout-->
-        <!--android:id="@+id/relativeLayout"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--app:layout_constraintBottom_toBottomOf="parent"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--android:background="@raw/prueba">-->
-
-
-
-
-    <!--</RelativeLayout>-->
+        fancy:fb_textColor="#FFFFFF" />
 
 
     <ImageView

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dani.dgonzalezapp.R;
@@ -22,6 +23,8 @@ public class MenuThatPokemonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_that_pokemon);
 
+        boolean gmail = getIntent().getBooleanExtra("gmail", false);
+
         findViewById(R.id.btn_play).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,8 +36,14 @@ public class MenuThatPokemonActivity extends AppCompatActivity {
         findViewById(R.id.btn_ranking).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =  new Intent(MenuThatPokemonActivity.this, RankingActivity.class);
-                startActivity(intent);
+                if(gmail){
+                    Intent intent =  new Intent(MenuThatPokemonActivity.this, RankingActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(MenuThatPokemonActivity.this, "No esta disponible sin Gmail", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
         //TODO: Cambiar activity de destino.

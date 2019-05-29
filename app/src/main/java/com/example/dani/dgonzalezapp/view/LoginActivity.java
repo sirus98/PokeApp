@@ -94,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
                 String Pwd = mPasswordView.getText().toString();
                 if (UserName.equalsIgnoreCase("usuari") && Pwd.equals("usuari")){
                     Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                    gmail= true;
+                    gmail= false;
                     intent.putExtra("gmail", gmail);
 
                     startActivity(intent);
@@ -116,6 +116,7 @@ public class LoginActivity extends AppCompatActivity {
     void comeIn(){
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
+            gmail= true;
             startActivity(new Intent(this, MenuActivity.class).putExtra("gmail", gmail));
 
             finish();

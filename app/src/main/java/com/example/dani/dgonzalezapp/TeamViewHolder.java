@@ -1,4 +1,4 @@
-package com.example.dani.dgonzalezapp.view;
+package com.example.dani.dgonzalezapp;
 
 
 import android.support.v7.widget.RecyclerView;

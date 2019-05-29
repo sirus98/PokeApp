@@ -22,8 +22,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Create table
-        db.execSQL(DatabaseOptions.TEAM_TABLE);
-        db.execSQL(DatabaseOptions.TEAM_POKEMON_TABLE);
+        db.execSQL(DatabaseOptions.CREATE_TEAM);
+        db.execSQL(DatabaseOptions.CREATE_TEAM_POKEMON);
     }
 
     @Override
@@ -35,71 +35,82 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    private String queryCheckRecent(EquipoPokemon equipoPokemon) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String idPokemon = "";
-
-        Cursor cursor = db.rawQuery("SELECT count(IdPokemon) FROM " + DatabaseOptions.TEAM_POKEMON_TABLE + " ORDER BY IdPokemon DESC", null);
-
-        if (cursor != null) cursor.moveToFirst();
-        if (cursor != null && cursor.getCount() > 0) {
-
-            if (cursor.moveToFirst()) {
-                while (!cursor.isAfterLast()) {
-                    idPokemon = cursor.getString(cursor.getColumnIndex(DatabaseOptions.ID_POKEMON));
-
-                    cursor.moveToNext();
-                }
-            }
-            cursor.close();
-        }
-
-        return idPokemon;
-    }
-
-    public LiveData<List<EquipoPokemon>> getAllPokemonFromTeam (String idEquipo) {
+    public List<EquipoPokemon> getAllPokemonFromTeam (String idEquipo) {
         SQLiteDatabase db = this.getReadableDatabase();
         List<EquipoPokemon> pokemonList = new ArrayList<>();
         EquipoPokemon equipoPokemon;
 
-        final MutableLiveData<List<EquipoPokemon>> lista = new MutableLiveData<>();
+        final List<EquipoPokemon> lista = new ArrayList<>();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseOptions.TEAM_POKEMON_TABLE + " WHERE IdEquipo = " + idEquipo + " ORDER BY DATE DESC", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DatabaseOptions.TEAM_POKEMON_TABLE + " WHERE id = '" + idEquipo + "' ORDER BY id_pokemon", null);
+
+        System.out.println("ABCD -> count cursor " + cursor.getCount());
 
         if (cursor != null) cursor.moveToFirst();
         if (cursor != null && cursor.getCount() > 0) {
 
             if (cursor.moveToFirst()) {
                 while (!cursor.isAfterLast()) {
+                    String id = cursor.getString(cursor.getColumnIndex(DatabaseOptions.ID));
                     String idPokemon = cursor.getString(cursor.getColumnIndex(DatabaseOptions.ID_POKEMON));
                     String name = cursor.getString(cursor.getColumnIndex(DatabaseOptions.NAME));
                     String image = cursor.getString(cursor.getColumnIndex(DatabaseOptions.IMAGE));
 
-                    equipoPokemon = new EquipoPokemon(idEquipo, idPokemon, image, name);
+                    equipoPokemon = new EquipoPokemon(id, idPokemon, image, name);
+
+                    System.out.println("ABCD -> Pokemon -> " + equipoPokemon.toString());
+
                     pokemonList.add(equipoPokemon);
                     cursor.moveToNext();
                 }
             }
-            lista.setValue(pokemonList);
+            lista.addAll(pokemonList);
             cursor.close();
         }
 
         return lista;
     }
 
+    private boolean queryCheckRecent(EquipoPokemon equipoPokemon) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        @SuppressLint("Recycle") Cursor cursor = db.query(DatabaseOptions.TEAM_POKEMON_TABLE,
+                new String[]{DatabaseOptions.ID},
+                DatabaseOptions.ID + "=?",
+                new String[]{equipoPokemon.getIdEquipo()}, null, null, null, "1");
+        if (cursor != null)
+            cursor.moveToFirst();
+        return cursor != null && cursor.getCount() > 0;
+    }
+
     public void addPokemonToTeam (EquipoPokemon equipoPokemon) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        String check = queryCheckRecent(equipoPokemon);
+        boolean check = queryCheckRecent(equipoPokemon);
 
-        values.put(DatabaseOptions.ID, equipoPokemon.getIdEquipo());
-        values.put(DatabaseOptions.ID_POKEMON, equipoPokemon.getIdPokemon());
-        values.put(DatabaseOptions.NAME, equipoPokemon.getName());
-        values.put(DatabaseOptions.IMAGE, equipoPokemon.getImage());
+        if (check) {
+            Cursor cursor = db.rawQuery("select count(*) + 1 from users where id='" + "0" + "'", null);
+            cursor.moveToFirst();
+            int count = cursor.getInt(0);
+            cursor.close();
 
-        // Inserting Row
-        db.insert(DatabaseOptions.CREATE_TEAM_POKEMON, null, values);
+            values.put(DatabaseOptions.ID, equipoPokemon.getIdEquipo());
+            values.put(DatabaseOptions.ID_POKEMON, String.valueOf(count));
+            values.put(DatabaseOptions.NAME, equipoPokemon.getName());
+            values.put(DatabaseOptions.IMAGE, equipoPokemon.getImage());
+
+            // Inserting Row
+            db.insert(DatabaseOptions.TEAM_POKEMON_TABLE, null, values);
+        } else {
+            values.put(DatabaseOptions.ID, "0");
+            values.put(DatabaseOptions.ID_POKEMON, "0");
+            values.put(DatabaseOptions.NAME, equipoPokemon.getName());
+            values.put(DatabaseOptions.IMAGE, equipoPokemon.getImage());
+
+            // Inserting Row
+            db.insert(DatabaseOptions.TEAM_POKEMON_TABLE, null, values);
+        }
 
 
         db.close(); // Closing database connection
