@@ -4,7 +4,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
-
 import com.example.dani.dgonzalezapp.GlideApp;
 import com.example.dani.dgonzalezapp.R;
 import com.example.dani.dgonzalezapp.model.Poke;

@@ -5,17 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
 import com.bumptech.glide.Glide;
 import com.example.dani.dgonzalezapp.R;
-import com.example.dani.dgonzalezapp.database.EquipoPokemon;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.ArrayList;
 
 public class MenuActivity extends AppCompatActivity {
 

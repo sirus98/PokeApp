@@ -15,15 +15,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-
 import com.example.dani.dgonzalezapp.R;
 import com.example.dani.dgonzalezapp.model.Poke;
-
-
 import java.util.ArrayList;
 import java.util.List;
 

@@ -8,13 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.dani.dgonzalezapp.R;
-import com.example.dani.dgonzalezapp.model.Ranking;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class MenuThatPokemonActivity extends AppCompatActivity {
 

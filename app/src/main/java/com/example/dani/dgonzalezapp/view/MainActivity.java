@@ -8,11 +8,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
 import com.example.dani.dgonzalezapp.MainViewModel;
 import com.example.dani.dgonzalezapp.R;
 import com.example.dani.dgonzalezapp.model.Poke;
-
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {

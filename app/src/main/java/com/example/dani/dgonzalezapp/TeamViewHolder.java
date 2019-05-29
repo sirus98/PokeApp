@@ -28,7 +28,7 @@ public class TeamViewHolder extends RecyclerView.ViewHolder {
         img3 = itemView.findViewById(R.id.img3);
         img4 = itemView.findViewById(R.id.img4);
         img5 = itemView.findViewById(R.id.img5);
-        img6 = itemView.findViewById(R.id.img6);
+        img6= itemView.findViewById(R.id.img6);
 
     }
 }

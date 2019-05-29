@@ -2,7 +2,6 @@ package com.example.dani.dgonzalezapp.view;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,7 +9,6 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.example.dani.dgonzalezapp.R;
 import com.firebase.ui.auth.AuthUI;
@@ -68,9 +66,6 @@ public class LoginActivity extends AppCompatActivity {
 
         comeIn();
 
-
-
-
         final ImageView pikachu2_gif = findViewById(R.id.entrenador);
 
         Glide.with(this)
@@ -107,7 +102,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);

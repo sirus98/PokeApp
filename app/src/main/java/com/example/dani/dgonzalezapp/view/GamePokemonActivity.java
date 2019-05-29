@@ -14,18 +14,14 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.dani.dgonzalezapp.R;
 import com.example.dani.dgonzalezapp.model.PokeImages;
 import com.example.dani.dgonzalezapp.model.Ranking;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
 import nl.dionsegijn.konfetti.KonfettiView;
 import nl.dionsegijn.konfetti.models.Shape;
 import nl.dionsegijn.konfetti.models.Size;
@@ -48,8 +44,6 @@ public class GamePokemonActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_pokemon);
 
         mReference = FirebaseDatabase.getInstance().getReference();
-
-
         Random rand = new Random();
         black = findViewById(R.id.imagePoke);
         nombrePoke =findViewById(R.id.textPoke);
@@ -57,16 +51,13 @@ public class GamePokemonActivity extends AppCompatActivity {
         vidas = findViewById(R.id.vidas);
         skip = findViewById(R.id.skip);
 
-        try {
             pokeImages.add(new PokeImages("Dragonite",R.raw.b_dragonite,R.raw.dragonite));
             pokeImages.add(new PokeImages("Snorlax",R.raw.b_snorlax,R.raw.snorlax));
             pokeImages.add(new PokeImages("Manectric",R.raw.b_manectric,R.raw.manectric));
             pokeImages.add(new PokeImages("Flygon",R.raw.b_flygon,R.raw.flygon));
             pokeImages.add(new PokeImages("Pikachu",R.raw.b_pikachu,R.raw.pikachu));
             pokeImages.add(new PokeImages("Sceptile",R.raw.b_sceptile,R.raw.sceptile));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+
 
         random = rand.nextInt(6);
 
@@ -121,7 +112,6 @@ public class GamePokemonActivity extends AppCompatActivity {
 
                             toast1.show();
                             verificar.setClickable(true);
-
                         }
                     }.start();
 

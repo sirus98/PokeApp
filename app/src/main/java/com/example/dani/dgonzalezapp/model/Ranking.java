@@ -1,7 +1,5 @@
 package com.example.dani.dgonzalezapp.model;
 
-
-
 public class Ranking {
     int score;
     String name;

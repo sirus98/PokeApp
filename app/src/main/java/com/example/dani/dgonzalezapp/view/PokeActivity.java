@@ -22,17 +22,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 
 import com.example.dani.dgonzalezapp.MainViewModel;
 import com.example.dani.dgonzalezapp.R;
-import com.example.dani.dgonzalezapp.database.DatabaseHelper;
-import com.example.dani.dgonzalezapp.database.EquipoPokemon;
 import com.example.dani.dgonzalezapp.model.Poke;
-import com.firebase.ui.database.FirebaseArray;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -155,15 +151,11 @@ public class PokeActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        final DatabaseHelper dbHelper = new DatabaseHelper(getApplicationContext());
-//
-
                         Log.e("abc", poke.id + " " + poke.name + " " + poke.url);
                         mRef.child("teams").child(uid).child("pokemons").push().setValue(poke);
                         Intent intent = new Intent(PokeActivity.this, CrearEquipoActivity.class);
                         load = true;
                         intent.putExtra("load", load);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                         Toast.makeText(PokeActivity.this, "Pokemon Añadido", Toast.LENGTH_LONG).show();
                     }
