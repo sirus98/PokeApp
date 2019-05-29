@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.dani.dgonzalezapp">
+    package="com.example.dani.PokeAPP">
 
     <uses-permission android:name="android.permission.INTERNET" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
@@ -14,19 +14,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-        <activity android:name=".view.RankingActivity"></activity>
-        <activity android:name=".view.GamePokemonActivity" />
-        <activity android:name=".view.MenuThatPokemonActivity" />
-        <activity android:name=".view.VerEquiposActivity" />
-        <activity android:name=".view.MenuActivity" />
-        <activity android:name=".view.MainActivity" />
-        <activity android:name=".view.PokeActivity" />
+        <activity android:name="com.example.dani.PokeAPP.view.RankingActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.example.dani.PokeAPP.view.GamePokemonActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.example.dani.PokeAPP.view.MenuThatPokemonActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.example.dani.PokeAPP.view.VerEquiposActivity" android:screenOrientation="portrait" />
+        <activity android:name="com.example.dani.PokeAPP.view.MenuActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.example.dani.PokeAPP.view.PokedexActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.example.dani.PokeAPP.view.PokeActivity" android:screenOrientation="portrait"/>
         <activity
-            android:name=".view.LoginActivity"
+            android:name="com.example.dani.PokeAPP.view.LoginActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".view.StartActivity"
+            android:name="com.example.dani.PokeAPP.view.StartActivity"
             android:label="@string/title_activity_start_activity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -34,8 +36,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.EquiposActivity" />
-        <activity android:name=".view.CrearEquipoActivity" />
+        <activity android:name="com.example.dani.PokeAPP.view.EquiposActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.example.dani.PokeAPP.view.CrearEquipoActivity" />
 
         <service android:name=".app.FireMsgService">
             <intent-filter>

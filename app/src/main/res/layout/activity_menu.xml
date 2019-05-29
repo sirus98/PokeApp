@@ -41,7 +41,7 @@
         fancy:fb_focusColor="#000000"
         fancy:fb_iconPosition="left"
         fancy:fb_radius="30dp"
-        fancy:fb_text="ListaPokemon"
+        fancy:fb_text="Lista Pokemon"
         fancy:fb_textColor="#FFFFFF" />
 
 
@@ -92,19 +92,30 @@
         fancy:fb_focusColor="#000000"
         fancy:fb_iconPosition="left"
         fancy:fb_radius="30dp"
-        fancy:fb_text="Administrar Equipos"
+        fancy:fb_text="Administrar Equipo"
         fancy:fb_textColor="#FFFFFF" />
 
-    <Button
+    <mehdi.sakout.fancybuttons.FancyButton
         android:id="@+id/sign_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="256dp"
-        android:layout_marginRight="256dp"
-        android:text="SIGN OUT"
+        android:layout_width="130dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="652dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        fancy:fb_borderColor="#FFFFFF"
+        fancy:fb_borderWidth="2dp"
+        fancy:fb_defaultColor="#000000"
+        fancy:fb_focusColor="#000000"
+        fancy:fb_iconPosition="left"
+        fancy:fb_radius="30dp"
+        fancy:fb_text="Administrar Equipos"
+        fancy:fb_textColor="#FFFFFF" />
 
 
 

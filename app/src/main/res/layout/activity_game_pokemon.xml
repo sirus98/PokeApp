@@ -10,8 +10,40 @@
     <nl.dionsegijn.konfetti.KonfettiView
         android:id="@+id/viewKonfetti"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+
+    <ImageView
+        android:id="@+id/hp1"
+        android:layout_width="49dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/hp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/hp2"
+        android:layout_width="49dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/hp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/hp3"
+        android:layout_width="49dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginTop="4dp"
+        android:src="@drawable/hp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:id="@+id/score"
         android:layout_width="100dp"
@@ -26,28 +58,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-    <TextView
-        android:id="@+id/vidas"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="55dp"
-        android:layout_marginLeft="55dp"
-        android:layout_marginEnd="300dp"
-        android:layout_marginRight="300dp"
-        android:text="HP: 3"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="#FF0000"/>
 
 
     <ImageView
         android:id="@+id/imagePoke"
-        android:layout_width="265dp"
-        android:layout_height="262dp"
+        android:layout_width="191dp"
+        android:layout_height="179dp"
         android:layout_marginStart="111dp"
         android:layout_marginLeft="111dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="111dp"
         android:layout_marginRight="111dp"
         android:layout_marginBottom="120dp"
