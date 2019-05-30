@@ -2,6 +2,7 @@ package com.example.dani.PokeAPP.view;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetFileDescriptor;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.widget.Toast;
+import android.media.MediaPlayer;
 
 import com.bumptech.glide.Glide;
 import com.example.dani.PokeAPP.R;
@@ -22,6 +23,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.io.IOException;
+
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -29,12 +32,14 @@ public class MenuActivity extends AppCompatActivity {
     private float acelVal;  //current acceleration and gravity
     private float acelLast; //last acceleration and gravity
     private float shake;    //acceleration value differ from gravity
-
+    MediaPlayer player2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        MediaPlayer[] easteregg = new MediaPlayer[1];
+        MediaPlayer player2;
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
@@ -106,11 +111,18 @@ public class MenuActivity extends AppCompatActivity {
             shake = shake * 0.9f + delta;
 
             if (shake > 12 ){
-                Toast toast = Toast.makeText(getApplicationContext(),"No me la menees", Toast.LENGTH_LONG);
-                toast.show();
+                String soundfile = "Lugia"  + ".mp3";
+                AssetFileDescriptor afd = null;
+                try {
+                    afd = getAssets().openFd(soundfile);
+                    player2 = new MediaPlayer();
+                    player2.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+                    player2.prepare();
+                    player2.start();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-
-
         }
 
         @Override
