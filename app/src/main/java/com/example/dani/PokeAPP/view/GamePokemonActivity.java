@@ -105,7 +105,6 @@ public class GamePokemonActivity extends AppCompatActivity {
                         hp2Extra.setVisibility(View.VISIBLE);
                     }
 
-
                     final KonfettiView konfettiView = findViewById(R.id.viewKonfetti);
                     konfettiView.build()
                             .addColors(Color.YELLOW, Color.GREEN, Color.MAGENTA)
