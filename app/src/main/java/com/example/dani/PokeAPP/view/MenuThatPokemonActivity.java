@@ -39,14 +39,6 @@ public class MenuThatPokemonActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btn_tutorial).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MenuThatPokemonActivity.this, MenuThatPokemonActivity.class);
-                startActivity(intent);
-            }
-        });
-
         FancyButton btnInicio = findViewById(R.id.menu);
         btnInicio.setOnClickListener(new View.OnClickListener() {
             @Override
