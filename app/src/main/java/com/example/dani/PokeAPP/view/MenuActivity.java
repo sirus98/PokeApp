@@ -22,14 +22,10 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        boolean gmail = getIntent().getBooleanExtra("gmail", false);
-
-
         findViewById(R.id.ListaPokemon).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, PokedexActivity.class);
-                intent.putExtra("gmail", gmail);
                 intent.putExtra("equipo", false);
                 startActivity(intent);
             }
@@ -41,7 +37,6 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, MenuThatPokemonActivity.class);
                 intent.putExtra("who's that pokemon", false);
-                intent.putExtra("gmail", gmail);
                 startActivity(intent);
             }
         });
@@ -51,7 +46,6 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuActivity.this, EquiposActivity.class);
-                intent.putExtra("gmail", gmail);
                 startActivity(intent);
             }
         });

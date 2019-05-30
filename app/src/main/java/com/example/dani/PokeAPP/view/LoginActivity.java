@@ -43,13 +43,9 @@ public class LoginActivity extends AppCompatActivity {
      * Keep track of the login task to ensure we can cancel it if requested.
      */
 
-    boolean gmail = false;
-
     // UI references.
 
-    private EditText mPasswordView, mUserName;
-    private View mProgressView;
-    private View mLoginFormView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,40 +69,12 @@ public class LoginActivity extends AppCompatActivity {
                 .asGif()
                 .load(R.raw.pikachu2)
                 .into(pikachu2_gif);
-        // Set up the login form.
-
-
-        FancyButton btnLogin = (FancyButton) findViewById(R.id.btnLogin);
-        btnLogin.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String UserName = mUserName.getText().toString();
-                String Pwd = mPasswordView.getText().toString();
-                if (UserName.equalsIgnoreCase("usuari") && Pwd.equals("usuari")) {
-                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                    gmail = false;
-                    intent.putExtra("gmail", gmail);
-
-                    startActivity(intent);
-                    Toast.makeText(LoginActivity.this, "You are Sign in Successfuly.", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Sorry, Username or Password is incorrect", Toast.LENGTH_LONG).show();
-
-                }
-
-
-            }
-        });
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
     }
 
     void comeIn() {
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
-            gmail = true;
-            startActivity(new Intent(this, MenuActivity.class).putExtra("gmail", gmail));
+            startActivity(new Intent(this, MenuActivity.class));
 
             finish();
         }

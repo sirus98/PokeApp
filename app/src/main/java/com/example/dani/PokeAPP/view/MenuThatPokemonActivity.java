@@ -22,7 +22,6 @@ public class MenuThatPokemonActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_that_pokemon);
 
-        boolean gmail = getIntent().getBooleanExtra("gmail", false);
 
         findViewById(R.id.btn_play).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,14 +34,8 @@ public class MenuThatPokemonActivity extends AppCompatActivity {
         findViewById(R.id.btn_ranking).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (gmail) {
                     Intent intent = new Intent(MenuThatPokemonActivity.this, RankingActivity.class);
                     startActivity(intent);
-                } else {
-                    Toast.makeText(MenuThatPokemonActivity.this, "No esta disponible sin Gmail", Toast.LENGTH_SHORT).show();
-                }
-
-
             }
         });
 
@@ -59,8 +52,6 @@ public class MenuThatPokemonActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuThatPokemonActivity.this, MenuActivity.class);
-                Boolean gmail = true;
-                intent.putExtra("gmail", gmail);
                 startActivity(intent);
             }
         });

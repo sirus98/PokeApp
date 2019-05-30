@@ -75,8 +75,6 @@ public class PokeActivity extends AppCompatActivity {
 
 
         boolean equipo = getIntent().getBooleanExtra("equipo", false);
-        boolean gmail = getIntent().getBooleanExtra("gmail", false);
-
 
         if (equipo) {
             addequipo.setVisibility(View.VISIBLE);
@@ -153,7 +151,6 @@ public class PokeActivity extends AppCompatActivity {
                         Intent intent = new Intent(PokeActivity.this, CrearEquipoActivity.class);
                         load = true;
                         intent.putExtra("load", load);
-                        intent.putExtra("gmail", gmail);
                         startActivity(intent);
                         Toast.makeText(PokeActivity.this, "Pokemon Añadido", Toast.LENGTH_LONG).show();
                     }

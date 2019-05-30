@@ -37,13 +37,19 @@ public class RankingActivity extends AppCompatActivity {
         mUser = FirebaseAuth.getInstance().getCurrentUser();
 
         FirebaseRecyclerOptions<Ranking> options = new FirebaseRecyclerOptions.Builder<Ranking>()
-                .setIndexedQuery(mReference.child(RANKING_REFERENCE).orderByChild("score").limitToFirst(10),
-                        mReference.child(RANKING_REFERENCE), Ranking.class)
+                .setQuery(
+                        mReference.child(RANKING_REFERENCE).orderByChild("score").limitToFirst(10),
+                        Ranking.class)
                 .setLifecycleOwner(this)
                 .build();
 
         RecyclerView recyclerView = findViewById(R.id.rankingList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+        linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager.setReverseLayout(true);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+
         recyclerView.setAdapter(new FirebaseRecyclerAdapter<Ranking, RankingViewHolder>(options) {
             @NonNull
             @Override
@@ -55,11 +61,8 @@ public class RankingActivity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull RankingViewHolder holder, int position, @NonNull Ranking ranking) {
-
-
                 holder.name.setText("Name: " + ranking.getName());
                 holder.score.setText("Score: " + ranking.getScore());
-
             }
         });
     }

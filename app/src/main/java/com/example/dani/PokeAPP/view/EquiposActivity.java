@@ -3,6 +3,7 @@ package com.example.dani.PokeAPP.view;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,9 +12,13 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dani.PokeAPP.R;
+import com.example.dani.PokeAPP.model.Team;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 
@@ -31,7 +36,6 @@ public class EquiposActivity extends AppCompatActivity {
         mRef = FirebaseDatabase.getInstance().getReference();
         uid = FirebaseAuth.getInstance().getUid();
 
-        boolean gmail = getIntent().getBooleanExtra("gmail", false);
         creado = getIntent().getBooleanExtra("creado", creado);
 
         FancyButton btnCrear = findViewById(R.id.crearequipo);
@@ -39,13 +43,25 @@ public class EquiposActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (creado) {
-                    Toast.makeText(EquiposActivity.this, "El equipo ya está creado", Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent(EquiposActivity.this, CrearEquipoActivity.class);
-                    intent.putExtra("gmail", gmail);
-                    startActivity(intent);
-                }
+                mRef.child("teams").child(uid).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            Toast.makeText(EquiposActivity.this, "Hay un equipo creado", Toast.LENGTH_LONG).show();
+
+
+                        }else{
+                            Intent intent = new Intent(EquiposActivity.this, CrearEquipoActivity.class);
+                            startActivity(intent);
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 
@@ -54,10 +70,27 @@ public class EquiposActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(EquiposActivity.this, VerEquiposActivity.class);
-                intent.putExtra("gmail", gmail);
-                startActivity(intent);
+                mRef.child("teams").child(uid).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.exists()){
+                            Intent intent = new Intent(EquiposActivity.this, VerEquiposActivity.class);
+
+
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(EquiposActivity.this, "No hay equipo", Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
+
         });
 
         FancyButton btnBorrar = findViewById(R.id.borrarequipo);
@@ -75,8 +108,6 @@ public class EquiposActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(EquiposActivity.this, MenuActivity.class);
-                Boolean gmail = true;
-                intent.putExtra("gmail", gmail);
                 startActivity(intent);
             }
         });

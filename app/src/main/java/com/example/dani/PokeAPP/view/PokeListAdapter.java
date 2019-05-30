@@ -63,10 +63,8 @@ public class PokeListAdapter extends RecyclerView.Adapter<PokeListAdapter.PokeLi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), PokeActivity.class);
-                Boolean gmail = true;
                 intent.putExtra("pokemon_url", poke.url);
                 intent.putExtra("equipo", equipo);
-                intent.putExtra("gmail", gmail);
                 holder.itemView.getContext().startActivity(intent);
 
 //                ArrayList<Integer>pokesound=new ArrayList<>()
