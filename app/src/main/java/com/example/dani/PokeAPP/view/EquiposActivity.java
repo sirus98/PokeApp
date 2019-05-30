@@ -3,6 +3,7 @@ package com.example.dani.PokeAPP.view;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.dani.PokeAPP.R;
-import com.example.dani.PokeAPP.model.Team;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,9 +24,11 @@ import mehdi.sakout.fancybuttons.FancyButton;
 
 public class EquiposActivity extends AppCompatActivity {
 
-    boolean creado = false;
     private DatabaseReference mRef;
     private String uid;
+    boolean borrardatos= true;
+    boolean haydatos= true;
+    boolean creardatos= true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,32 +38,36 @@ public class EquiposActivity extends AppCompatActivity {
         mRef = FirebaseDatabase.getInstance().getReference();
         uid = FirebaseAuth.getInstance().getUid();
 
-        creado = getIntent().getBooleanExtra("creado", creado);
-
         FancyButton btnCrear = findViewById(R.id.crearequipo);
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                mRef.child("teams").child(uid).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()){
-                            Toast.makeText(EquiposActivity.this, "Hay un equipo creado", Toast.LENGTH_LONG).show();
+                creardatos=true;
+                if (creardatos){
+                    mRef.child("teams").child(uid).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()){
+                                creardatos= false;
+
+                            }else{
+                                if (creardatos){
+                                    Intent intent = new Intent(EquiposActivity.this, CrearEquipoActivity.class);
+                                    startActivity(intent);
+                                    creardatos= false;
+                                }
 
 
-                        }else{
-                            Intent intent = new Intent(EquiposActivity.this, CrearEquipoActivity.class);
-                            startActivity(intent);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
+                    });
+                }
             }
         });
 
@@ -70,25 +76,31 @@ public class EquiposActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                mRef.child("teams").child(uid).addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()){
-                            Intent intent = new Intent(EquiposActivity.this, VerEquiposActivity.class);
+                haydatos=true;
 
+                if (haydatos){
 
-                            startActivity(intent);
-                        }else{
-                            Toast.makeText(EquiposActivity.this, "No hay equipo", Toast.LENGTH_LONG).show();
+                    mRef.child("teams").child(uid).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()){
+                                Intent intent = new Intent(EquiposActivity.this, VerEquiposActivity.class);
+                                startActivity(intent);
+                                haydatos=false;
+                            }else{
+                                Toast.makeText(EquiposActivity.this, "No hay equipo", Toast.LENGTH_SHORT).show();
+                                haydatos=false;
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
-                    }
+                    });
+                }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
             }
 
         });
@@ -97,9 +109,28 @@ public class EquiposActivity extends AppCompatActivity {
         btnBorrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                creado = false;
-                mRef.child("teams").child(uid).setValue(null);
-                Toast.makeText(EquiposActivity.this, "Se ha eliminado el equipo", Toast.LENGTH_SHORT).show();
+
+                borrardatos= true;
+                mRef.child("teams").child(uid).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        if(borrardatos) {
+                            if (dataSnapshot.exists()) {
+                                mRef.child("teams").child(uid).setValue(null);
+                                Toast.makeText(EquiposActivity.this, "Se ha eliminado el equipo", Toast.LENGTH_SHORT).show();
+                                borrardatos= false;
+
+                            } else {
+                                Toast.makeText(EquiposActivity.this, "No hay equipo", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
 

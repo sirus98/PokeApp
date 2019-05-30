@@ -20,6 +20,7 @@ public class VerEquiposActivity extends AppCompatActivity {
 
     private DatabaseReference mRef;
     private String uid;
+    String apiImages = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,45 +40,48 @@ public class VerEquiposActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Team team = dataSnapshot.getValue(Team.class);
 
+                if(team == null) return;
+
                 int i = 0;
                 for (Poke poke : team.pokemons.values()) {
                     System.out.println("ABCD -> i -> " + i);
                     if (i == 0) {
                         GlideApp.with(VerEquiposActivity.this)
-                                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.id + ".png")
+                                .load(apiImages + poke.id + ".png")
                                 .into((ImageView) findViewById(R.id.imageView));
                         findViewById(R.id.imageView).setClickable(false);
                     }
+
                     if (i == 1) {
                         GlideApp.with(VerEquiposActivity.this)
-                                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.id + ".png")
+                                .load(apiImages + poke.id + ".png")
                                 .into((ImageView) findViewById(R.id.imageView2));
                         findViewById(R.id.imageView2).setClickable(false);
                     }
+
                     if (i == 2) {
                         GlideApp.with(VerEquiposActivity.this)
-                                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.id + ".png")
+                                .load(apiImages + poke.id + ".png")
                                 .into((ImageView) findViewById(R.id.imageView3));
                         findViewById(R.id.imageView3).setClickable(false);
-
                     }
 
                     if (i == 3) {
                         GlideApp.with(VerEquiposActivity.this)
-                                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.id + ".png")
+                                .load(apiImages + poke.id + ".png")
                                 .into((ImageView) findViewById(R.id.imageView4));
                         findViewById(R.id.imageView4).setClickable(false);
                     }
 
                     if (i == 4) {
                         GlideApp.with(VerEquiposActivity.this)
-                                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.id + ".png")
+                                .load(apiImages + poke.id + ".png")
                                 .into((ImageView) findViewById(R.id.imageView5));
                         findViewById(R.id.imageView5).setClickable(false);
                     }
                     if (i == 5) {
                         GlideApp.with(VerEquiposActivity.this)
-                                .load("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + poke.id + ".png")
+                                .load(apiImages + poke.id + ".png")
                                 .into((ImageView) findViewById(R.id.imageView6));
                         findViewById(R.id.imageView6).setClickable(false);
                     }
