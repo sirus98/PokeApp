@@ -74,10 +74,6 @@ public class LoginActivity extends AppCompatActivity {
                 .load(R.raw.pikachu2)
                 .into(pikachu2_gif);
         // Set up the login form.
-        mUserName = (EditText) findViewById(R.id.txtUserName);
-
-
-        mPasswordView = (EditText) findViewById(R.id.txtPassword);
 
 
         FancyButton btnLogin = (FancyButton) findViewById(R.id.btnLogin);

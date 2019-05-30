@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MenuThatPokemonActivity"
     android:background="@drawable/fondo"
-    xmlns:fancy="http://schemas.android.com/apk/res-auto">
+    tools:context=".view.MenuThatPokemonActivity">
 
 
     <ImageView
@@ -120,12 +120,6 @@
         fancy:fb_radius="30dp"
         fancy:fb_text="Sign Out"
         fancy:fb_textColor="#FFFFFF" />
-
-
-
-
-
-
 
 
 </android.support.constraint.ConstraintLayout>
