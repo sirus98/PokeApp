@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -34,13 +35,13 @@ public class GamePokemonActivity extends AppCompatActivity {
     List<PokeImages> pokeImages = new ArrayList<>();
     DatabaseReference mReference;
 
-    Button verificar, skip;
-    ImageView black, hp1, hp2, hp3;
+    ImageView black, hp1, hp2, hp3,hp2Extra,hp3Extra,hp4Extra;
     int random;
     EditText nombrePoke, nameE;
     TextView scoreText;
     int score = 0;
     int vida = 3;
+    boolean vidaExtra = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,25 @@ public class GamePokemonActivity extends AppCompatActivity {
 
                     score = score + 20;
                     scoreText.setText("Score: " + score);
+
+                    if (score == 20 && vida==3 && vidaExtra){
+
+                        vida++;
+                        System.out.println("ABC "+vida);
+                        hp4Extra = findViewById(R.id.hp4Extra);
+                        hp4Extra.setVisibility(View.VISIBLE);
+                    }
+
+                    if (score == 20 && vida==2 && vidaExtra){
+                        vida++;
+                        hp3Extra = findViewById(R.id.hp3Extra);
+                        hp3Extra.setVisibility(View.VISIBLE);
+                    }
+                    if (score == 20 && vida==1 && vidaExtra){
+                        vida++;
+                        hp2Extra = findViewById(R.id.hp2Extra);
+                        hp2Extra.setVisibility(View.VISIBLE);
+                    }
 
 
                     final KonfettiView konfettiView = findViewById(R.id.viewKonfetti);
@@ -129,16 +149,26 @@ public class GamePokemonActivity extends AppCompatActivity {
                     nombrePoke.setText("");
 
                     vida = vida - 1;
+                    System.out.println("ABC "+vida);
 
+
+                    if (vida == 3) {
+                        hp4Extra = findViewById(R.id.hp4Extra);
+                        hp4Extra.setVisibility(View.INVISIBLE);
+                    }
 
                     if (vida == 2) {
                         hp3 = findViewById(R.id.hp3);
-                        hp3.setVisibility(View.GONE);
+                        hp3.setVisibility(View.INVISIBLE);
+                        hp3Extra = findViewById(R.id.hp3Extra);
+                        hp3Extra.setVisibility(View.INVISIBLE);
                     }
 
                     if (vida == 1) {
                         hp2 = findViewById(R.id.hp2);
-                        hp2.setVisibility(View.GONE);
+                        hp2.setVisibility(View.INVISIBLE);
+                        hp2Extra = findViewById(R.id.hp2Extra);
+                        hp2Extra.setVisibility(View.INVISIBLE);
                     }
 
 
@@ -200,15 +230,25 @@ public class GamePokemonActivity extends AppCompatActivity {
                     }
                 }.start();
 
+                if (vida == 3) {
+                    hp4Extra = findViewById(R.id.hp4Extra);
+                    hp4Extra.setVisibility(View.INVISIBLE);
+                }
+
                 if (vida == 2) {
                     hp3 = findViewById(R.id.hp3);
                     hp3.setVisibility(View.INVISIBLE);
+                    hp3Extra = findViewById(R.id.hp3Extra);
+                    hp3Extra.setVisibility(View.INVISIBLE);
                 }
 
                 if (vida == 1) {
                     hp2 = findViewById(R.id.hp2);
                     hp2.setVisibility(View.INVISIBLE);
+                    hp2Extra = findViewById(R.id.hp2Extra);
+                    hp2Extra.setVisibility(View.INVISIBLE);
                 }
+
 
                 if (vida == 0) {
                     hp1 = findViewById(R.id.hp1);
