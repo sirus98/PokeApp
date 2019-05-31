@@ -63,9 +63,13 @@ public class GamePokemonActivity extends AppCompatActivity {
         pokeImages.add(new PokeImages("Flygon", R.raw.b_flygon, R.raw.flygon));
         pokeImages.add(new PokeImages("Pikachu", R.raw.b_pikachu, R.raw.pikachu));
         pokeImages.add(new PokeImages("Sceptile", R.raw.b_sceptile, R.raw.sceptile));
+        pokeImages.add(new PokeImages("Greninja", R.raw.b_greninja, R.raw.greninja));
+        pokeImages.add(new PokeImages("Emolga", R.raw.b_emolga, R.raw.emolga));
+        pokeImages.add(new PokeImages("Pachirisu", R.raw.b_pachirisu, R.raw.pachirisu));
+        pokeImages.add(new PokeImages("Zeraora", R.raw.b_zerarora, R.raw.zeraora));
 
 
-        random = rand.nextInt(6);
+        random = rand.nextInt(10);
 
         black.setImageDrawable(getResources().getDrawable(pokeImages.get(random).getImg_black()));
 
@@ -127,7 +131,7 @@ public class GamePokemonActivity extends AppCompatActivity {
 
                         @Override
                         public void onFinish() {
-                            random = rand.nextInt(6);
+                            random = rand.nextInt(10);
                             black.setImageDrawable(getResources().getDrawable(pokeImages.get(random).getImg_black()));
                             Toast toast1 =
                                     Toast.makeText(getApplicationContext(),
@@ -204,7 +208,7 @@ public class GamePokemonActivity extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                random = rand.nextInt(6);
+                random = rand.nextInt(10);
 
                 black.setImageDrawable(getResources().getDrawable(pokeImages.get(random).getImg_black()));
                 Toast toast1 =
