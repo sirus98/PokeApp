@@ -57,16 +57,16 @@ public class GamePokemonActivity extends AppCompatActivity {
         FancyButton verificar = findViewById(R.id.verificar);
         FancyButton skip = findViewById(R.id.skip);
 
-        pokeImages.add(new PokeImages("Dragonite", R.raw.b_dragonite, R.raw.dragonite));
-        pokeImages.add(new PokeImages("Snorlax", R.raw.b_snorlax, R.raw.snorlax));
-        pokeImages.add(new PokeImages("Manectric", R.raw.b_manectric, R.raw.manectric));
-        pokeImages.add(new PokeImages("Flygon", R.raw.b_flygon, R.raw.flygon));
-        pokeImages.add(new PokeImages("Pikachu", R.raw.b_pikachu, R.raw.pikachu));
-        pokeImages.add(new PokeImages("Sceptile", R.raw.b_sceptile, R.raw.sceptile));
-        pokeImages.add(new PokeImages("Greninja", R.raw.b_greninja, R.raw.greninja));
-        pokeImages.add(new PokeImages("Emolga", R.raw.b_emolga, R.raw.emolga));
-        pokeImages.add(new PokeImages("Pachirisu", R.raw.b_pachirisu, R.raw.pachirisu));
-        pokeImages.add(new PokeImages("Zeraora", R.raw.b_zerarora, R.raw.zeraora));
+        pokeImages.add(new PokeImages("DRAGONITE", R.raw.b_dragonite, R.raw.dragonite));
+        pokeImages.add(new PokeImages("SNORLAX", R.raw.b_snorlax, R.raw.snorlax));
+        pokeImages.add(new PokeImages("MANECTRIC", R.raw.b_manectric, R.raw.manectric));
+        pokeImages.add(new PokeImages("FLYGON", R.raw.b_flygon, R.raw.flygon));
+        pokeImages.add(new PokeImages("PIKACHU", R.raw.b_pikachu, R.raw.pikachu));
+        pokeImages.add(new PokeImages("SCEPTYLE", R.raw.b_sceptile, R.raw.sceptile));
+        pokeImages.add(new PokeImages("GRENINJA", R.raw.b_greninja, R.raw.greninja));
+        pokeImages.add(new PokeImages("EMOLGA", R.raw.b_emolga, R.raw.emolga));
+        pokeImages.add(new PokeImages("PACHIRISU", R.raw.b_pachirisu, R.raw.pachirisu));
+        pokeImages.add(new PokeImages("ZERAORA", R.raw.b_zerarora, R.raw.zeraora));
 
 
         random = rand.nextInt(10);
@@ -78,7 +78,7 @@ public class GamePokemonActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (pokeImages.get(random).getNom().equals(nombrePoke.getText().toString())) {
+                if (pokeImages.get(random).getNom().equals(nombrePoke.getText().toString().toUpperCase())) {
                     black.setImageDrawable(getResources().getDrawable(pokeImages.get(random).getImg_color()));
                     Toast toast1 =
                             Toast.makeText(getApplicationContext(),
