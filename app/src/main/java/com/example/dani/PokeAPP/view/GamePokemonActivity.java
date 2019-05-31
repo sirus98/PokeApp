@@ -190,7 +190,14 @@ public class GamePokemonActivity extends AppCompatActivity {
                         builder.setPositiveButton("Add your score", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                String nameStr = name.getText().toString().trim();
+
+                                String key = mReference.push().getKey();
+                                String namee = nameE.getText().toString();
+
+                                Ranking ranking = new Ranking(score, namee);
+
+                                mReference.child("Ranking").child(key).setValue(ranking);
+
 
                                 Intent intent = new Intent(GamePokemonActivity.this, MenuThatPokemonActivity.class);
                                 startActivity(intent);
