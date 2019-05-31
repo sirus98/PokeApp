@@ -38,8 +38,9 @@ public class MenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        MediaPlayer[] easteregg = new MediaPlayer[1];
-        MediaPlayer player2;
+
+        player2 = new MediaPlayer();
+
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         sensorManager.registerListener(sensorListener, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
@@ -110,14 +111,20 @@ public class MenuActivity extends AppCompatActivity {
             float delta = acelVal - acelLast;
             shake = shake * 0.9f + delta;
 
-            if (shake > 12 ){
-                String soundfile = "Lugia"  + ".mp3";
+            if (shake > 12 && !player2.isPlaying() ){
+                String soundfile = "Lugia"  + ".wav";
                 AssetFileDescriptor afd = null;
                 try {
                     afd = getAssets().openFd(soundfile);
-                    player2 = new MediaPlayer();
                     player2.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                     player2.prepare();
+                    player2.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                        @Override
+                        public void onCompletion(MediaPlayer mp) {
+                            player2.stop();
+                            player2.reset();
+                        }
+                    });
                     player2.start();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -130,4 +137,9 @@ public class MenuActivity extends AppCompatActivity {
 
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
